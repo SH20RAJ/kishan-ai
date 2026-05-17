@@ -31,7 +31,7 @@ export default function ChatPage() {
     setLoading(true);
     try {
       const res = await fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: text }) });
-      const data = await res.json();
+      const data = (await res.json()) as { data: AIResponse };
       const aiResp: AIResponse = data.data;
       setMessages(prev => [...prev, {
         id: (Date.now() + 1).toString(), role: 'assistant', content: aiResp.answer,
@@ -51,8 +51,8 @@ export default function ChatPage() {
       <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
         {messages.length === 0 && (
           <div className="flex flex-col items-center justify-center h-full text-center px-4">
-            <div className="w-20 h-20 rounded-3xl bg-gradient-to-b from-primary to-primary-dark flex items-center justify-center mb-4 shadow-[0_5px_0_#14532d]">
-              <span className="text-4xl">🦜</span>
+            <div className="w-20 h-20 rounded-3xl bg-white border-2 border-primary/20 flex items-center justify-center overflow-hidden mb-4 shadow-[0_5px_0_rgba(22,101,52,0.15)]">
+              <img src="/logo.png" alt="Kino Mascot" className="w-16 h-16 object-cover scale-[1.08]" />
             </div>
             <h2 className="text-xl font-extrabold text-foreground mb-1">Ask Kino</h2>
             <p className="text-muted text-sm mb-6">Your AI farming assistant — ask anything!</p>
@@ -70,7 +70,9 @@ export default function ChatPage() {
         {messages.map((msg) => (
           <div key={msg.id} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
             {msg.role === 'assistant' && (
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-b from-primary to-primary-dark flex items-center justify-center text-sm mr-2 mt-1 shrink-0 shadow-[0_2px_0_#14532d]">🦜</div>
+              <div className="w-8 h-8 rounded-xl bg-white border border-primary/10 flex items-center justify-center overflow-hidden mr-2 mt-1 shrink-0 shadow-[0_2px_0_rgba(22,101,52,0.1)]">
+                <img src="/logo.png" alt="Kino Mascot" className="w-6 h-6 object-cover scale-[1.08]" />
+              </div>
             )}
             <div className={`max-w-[80%] rounded-3xl px-5 py-3.5 ${
               msg.role === 'user'
@@ -111,7 +113,9 @@ export default function ChatPage() {
 
         {loading && (
           <div className="flex justify-start">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-b from-primary to-primary-dark flex items-center justify-center text-sm mr-2 shrink-0 shadow-[0_2px_0_#14532d]">🦜</div>
+            <div className="w-8 h-8 rounded-xl bg-white border border-primary/10 flex items-center justify-center overflow-hidden mr-2 shrink-0 shadow-[0_2px_0_rgba(22,101,52,0.1)]">
+              <img src="/logo.png" alt="Kino Mascot" className="w-6 h-6 object-cover scale-[1.08]" />
+            </div>
             <div className="bg-surface border-2 border-border rounded-3xl rounded-bl-lg px-5 py-3.5 shadow-[0_3px_0_rgba(0,0,0,0.04)]">
               <div className="flex items-center gap-2">
                 <div className="flex gap-1">

@@ -1,17 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Nunito } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const nunito = Nunito({
   subsets: ["latin"],
   display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: "swap",
+  variable: "--font-nunito",
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -45,38 +40,15 @@ export const metadata: Metadata = {
     title: "KisanAI - AI Farming Assistant for Every Indian Farmer",
     description:
       "Crop disease detection, weather advisory, mandi prices, and government schemes in your language.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "KisanAI - AI Farming Assistant",
-      },
-    ],
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "KisanAI" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "KisanAI - AI Farming Assistant for Every Indian Farmer",
-    description:
-      "Crop disease detection, weather advisory, mandi prices, and government schemes in your language.",
+    description: "Crop disease detection, weather advisory, mandi prices, and government schemes in your language.",
     images: ["/og-image.png"],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  manifest: "/manifest.json",
-  icons: {
-    icon: "/favicon.svg",
-    apple: "/apple-touch-icon.png",
-  },
+  robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
@@ -84,27 +56,20 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#166534" },
-    { media: "(prefers-color-scheme: dark)", color: "#14532d" },
+    { media: "(prefers-color-scheme: light)", color: "#58CC02" },
+    { media: "(prefers-color-scheme: dark)", color: "#1a1a2e" },
   ],
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" dir="ltr" className="scroll-smooth">
+    <html lang="en" dir="ltr" className={`scroll-smooth ${nunito.variable}`} suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground min-h-dvh`}
+        className={`${nunito.className} antialiased bg-background text-foreground min-h-dvh`}
+        style={{ fontFamily: "var(--font-nunito), 'Nunito', sans-serif" }}
       >
         {children}
       </body>

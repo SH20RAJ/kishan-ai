@@ -14,7 +14,7 @@ export default function WeatherPage() {
     setLoading(true);
     try {
       const res = await fetch(`/api/weather?location=${encodeURIComponent(location)}`);
-      const data = await res.json();
+      const data = (await res.json()) as { data: WeatherData };
       setWeather(data.data);
     } catch { setWeather(mockWeatherData); }
     finally { setLoading(false); }
@@ -67,7 +67,10 @@ export default function WeatherPage() {
       </div>
 
       {/* Farming Actions — Tactile Cards */}
-      <h2 className="font-extrabold text-foreground mb-3 text-sm uppercase tracking-wider">🦜 Kino Recommends</h2>
+      <h2 className="font-extrabold text-foreground mb-3 text-sm uppercase tracking-wider flex items-center gap-1.5">
+        <img src="/logo.png" alt="Kino Mascot" className="w-5 h-5 object-contain" />
+        Kino Recommends
+      </h2>
       <div className="space-y-3 mb-6">
         {w.farmingActions.map((action, i) => (
           <div key={i} className="flex gap-3 p-4 rounded-2xl bg-surface border-2 border-border shadow-[0_3px_0_rgba(0,0,0,0.04)]">

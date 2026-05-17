@@ -24,8 +24,8 @@ export default function DashboardPage() {
     <div className="px-4 py-6 pb-8 max-w-lg mx-auto">
       {/* Kino Welcome Banner */}
       <section className="mb-6 rounded-3xl bg-gradient-to-r from-green-50 to-amber-50/50 border-2 border-primary/10 p-5 flex items-center gap-4">
-        <div className="w-16 h-16 rounded-2xl bg-white border-2 border-primary/20 flex items-center justify-center text-3xl shrink-0 shadow-[0_3px_0_rgba(22,101,52,0.1)]">
-          🦜
+        <div className="w-16 h-16 rounded-2xl bg-white border-2 border-primary/20 flex items-center justify-center overflow-hidden shrink-0 shadow-[0_3px_0_rgba(22,101,52,0.1)]">
+          <img src="/logo.png" alt="Kino Mascot" className="w-14 h-14 object-cover scale-[1.08]" />
         </div>
         <div>
           <h1 className="text-lg font-extrabold text-primary tracking-tight">Namaste, Kisan!</h1>
@@ -56,7 +56,9 @@ export default function DashboardPage() {
       <section className="mb-8">
         <Link href="/application/chat" className="block rounded-3xl bg-gradient-to-br from-primary to-primary-dark border-2 border-primary/20 p-6 text-white shadow-[0_6px_0_#14532d] active:translate-y-[6px] active:shadow-none transition-all">
           <div className="flex items-center gap-4">
-            <span className="text-4xl">🦜</span>
+            <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center overflow-hidden shrink-0 shadow-md">
+              <img src="/logo.png" alt="Kino Mascot" className="w-10 h-10 object-cover scale-[1.08]" />
+            </div>
             <div>
               <h3 className="font-extrabold text-lg">Ask Kino anything</h3>
               <p className="text-green-200 text-sm mt-1">Crop disease? Weather? Mandi price? Just ask!</p>

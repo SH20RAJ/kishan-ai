@@ -302,7 +302,8 @@ export default function HomePage() {
                 <div className="hidden md:block absolute left-[-10px] top-1/2 -translate-y-1/2 w-4 h-4 bg-white border-l-2 border-b-2 border-primary/10 rotate-45" />
                 <div className="bg-white rounded-2xl p-6 shadow-[0_2px_8px_rgba(0,0,0,0.02)] border border-primary/5">
                   <h3 className="text-lg font-extrabold text-primary flex items-center gap-1.5 mb-2">
-                    {t.kino.title} 🦜
+                    {t.kino.title}
+                    <img src="/logo.png" alt="Kino Mascot" className="w-5 h-5 object-contain" />
                   </h3>
                   <p className="text-muted leading-relaxed text-sm sm:text-base">
                     &ldquo;{t.kino.bubble}&rdquo;
@@ -550,7 +551,7 @@ export default function HomePage() {
               <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">{t.faq.title}</h2>
             </div>
             <div className="space-y-4">
-              {translatedFaqs.map((faq, i) => (
+              {t.faq.items.map((faq, i) => (
                 <details key={i} className="group bg-surface rounded-2xl border-2 border-border overflow-hidden">
                   <summary className="flex items-center justify-between px-6 py-5 cursor-pointer font-extrabold text-foreground hover:text-primary transition-colors list-none">
                     <span className="pr-4">{faq.q}</span>

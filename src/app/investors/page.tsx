@@ -63,31 +63,39 @@ const knownVsUnknown = [
 export default function InvestorsPage() {
   return (
     <>
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-surface/95 backdrop-blur-sm border-b border-border">
+      <nav className="sticky top-0 z-50 bg-surface/95 backdrop-blur-sm border-b-2 border-border/80">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold text-primary flex items-center gap-2">
-            <svg className="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-            KisanAI
+          <Link href="/" className="text-xl font-extrabold text-white flex items-center gap-2 tracking-tight">
+            <div className="w-8 h-8 rounded-lg overflow-hidden bg-white flex items-center justify-center border border-white/20">
+              <img src="/logo.png" alt="KisanAI Logo" className="w-7 h-7 object-contain" />
+            </div>
+            <span className="text-foreground">KisanAI</span>
           </Link>
-          <div className="hidden md:flex items-center gap-6 text-sm font-medium">
-            <Link href="/government" className="text-muted hover:text-primary">Government</Link>
-            <Link href="/investors" className="text-primary font-semibold">Investors</Link>
-            <Link href="/partners" className="text-muted hover:text-primary">Partners</Link>
-            <Link href="/research" className="text-muted hover:text-primary">Research</Link>
-            <Link href="/impact" className="text-muted hover:text-primary">Impact</Link>
-            <Link href="/application" className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark">Try KisanAI</Link>
+          <div className="hidden md:flex items-center gap-6 text-sm font-bold">
+            <Link href="/government" className="text-muted hover:text-primary transition-colors">Government</Link>
+            <Link href="/investors" className="text-primary border-b-2 border-primary pb-0.5">Investors</Link>
+            <Link href="/partners" className="text-muted hover:text-primary transition-colors">Partners</Link>
+            <Link href="/research" className="text-muted hover:text-primary transition-colors">Research</Link>
+            <Link href="/impact" className="text-muted hover:text-primary transition-colors">Impact</Link>
+            <Link 
+              href="/application" 
+              className="btn-3d-primary px-4 py-2 text-xs shadow-[0_3px_0_var(--primary-dark)]"
+            >
+              Try KisanAI
+            </Link>
           </div>
-          <div className="md:hidden"><Link href="/" className="text-primary font-semibold text-sm">Home</Link></div>
+          <div className="md:hidden">
+            <Link href="/" className="text-primary font-bold text-sm">Home</Link>
+          </div>
         </div>
       </nav>
 
       <main>
         {/* Hero */}
-        <section className="bg-gradient-to-b from-primary-dark to-primary text-white py-20 sm:py-28">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6">
-            <p className="text-primary-light font-semibold text-sm tracking-wide uppercase mb-4">Investor Brief</p>
-            <h1 className="text-4xl sm:text-5xl font-bold leading-tight text-white">AI farming assistant for every Indian farmer</h1>
+        <section className="bg-gradient-to-b from-primary-dark to-primary text-white py-20 sm:py-28 border-b-4 border-primary-dark">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
+            <p className="text-amber-300 font-bold text-sm tracking-wide uppercase mb-4">Investor Brief</p>
+            <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight text-white tracking-tight">AI farming assistant for every Indian farmer</h1>
             <p className="mt-6 text-lg sm:text-xl text-green-100 leading-relaxed max-w-3xl">India has 9.7 crore digitally traceable farmers. Rural internet penetration exceeds 41%. No farmer-first, vernacular AI assistant has achieved meaningful scale. We are building the lowest-friction, highest-trust wrapper around existing agricultural information channels.</p>
           </div>
         </section>
@@ -284,7 +292,7 @@ export default function InvestorsPage() {
               </div>
               <div><label htmlFor="email" className="block text-sm font-medium text-amber-100 mb-1">Email</label><input type="email" id="email" name="email" required className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-green-200 focus:outline-none focus:ring-2 focus:ring-white/40" placeholder="you@fund.com" /></div>
               <div><label htmlFor="message" className="block text-sm font-medium text-amber-100 mb-1">Message</label><textarea id="message" name="message" rows={4} className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-green-200 focus:outline-none focus:ring-2 focus:ring-white/40 resize-none" placeholder="What would you like to know?" /></div>
-              <button type="submit" className="w-full sm:w-auto px-8 py-4 bg-white text-earth font-bold rounded-xl text-lg hover:bg-amber-50 transition-colors">Get in Touch</button>
+              <button type="submit" className="w-full sm:w-auto btn-3d-saffron text-amber-950 font-extrabold shadow-[0_5px_0_#9a3412] px-8 py-4 text-lg">Get in Touch</button>
             </form>
           </div>
         </section>
@@ -295,9 +303,11 @@ export default function InvestorsPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
             <div>
-              <Link href="/" className="text-lg font-bold text-white flex items-center gap-2 mb-4">
-                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                KisanAI
+              <Link href="/" className="text-lg font-extrabold text-white flex items-center gap-2 mb-4 tracking-tight">
+                <div className="w-8 h-8 rounded-lg overflow-hidden bg-white flex items-center justify-center border border-white/20">
+                  <img src="/logo.png" alt="KisanAI Logo" className="w-7 h-7 object-contain" />
+                </div>
+                <span>KisanAI</span>
               </Link>
               <p className="text-gray-400 text-sm leading-relaxed">AI farming assistant for every Indian farmer.</p>
             </div>

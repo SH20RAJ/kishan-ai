@@ -15,7 +15,7 @@
   --color-border: var(--border-color);
   --color-surface: var(--surface);
   --color-surface-raised: var(--surface-raised);
-  --color-success: var(--success);
+  --color-success: var(--primary);
   --color-warning: var(--warning);
   --color-error: var(--error);
   --color-info: var(--info);
@@ -23,42 +23,115 @@
   --color-earth-light: var(--earth-light);
   --color-saffron: var(--saffron);
   --color-saffron-light: var(--saffron-light);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --text-xs: 0.8125rem;
-  --text-sm: 0.9375rem;
-  --text-base: 1.0625rem;
-  --text-lg: 1.1875rem;
-  --text-xl: 1.375rem;
-  --text-2xl: 1.625rem;
+  --font-display: 'Nunito', sans-serif;
+  --font-sans: 'Nunito Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
   --text-3xl: 2rem;
   --text-4xl: 2.5rem;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
 }
 
+/* ============================================================
+   DESIGN TOKENS — Duolingo Design System
+   ============================================================ */
+
 :root {
-  --background: #fefdf8;
-  --foreground: #1c1917;
-  --primary: #166534;
-  --primary-light: #22c55e;
-  --primary-dark: #14532d;
-  --secondary: #92400e;
-  --secondary-light: #d97706;
-  --accent: #c2410c;
-  --accent-light: #fb923c;
-  --muted: #78716c;
-  --muted-light: #a8a29e;
-  --border-color: #e7e5e4;
-  --surface: #ffffff;
-  --surface-raised: #fafaf9;
-  --success: #16a34a;
-  --warning: #ca8a04;
-  --error: #dc2626;
-  --info: #2563eb;
+  /* Core Brand */
+  --primary: #58CC02;          /* Feather Green */
+  --primary-light: #89E219;    /* Mask Green */
+  --primary-dark: #46A302;     /* Shadow Green */
+
+  /* Secondary */
+  --secondary: #1CB0F6;        /* Macaw Blue */
+  --secondary-light: #7AD6FF;  /* Light Macaw */
+
+  /* Accent & Warm */
+  --accent: #FF9600;           /* Fox Orange */
+  --accent-light: #FFB94D;     /* Light Fox */
+  --saffron: #FFC800;          /* Bee Yellow */
+  --saffron-light: #FFE066;    /* Light Bee */
+
+  /* Semantic */
+  --error: #FF4B4B;            /* Cardinal Red */
+  --info: #1CB0F6;             /* Macaw Blue */
+  --warning: #FFC800;          /* Bee Yellow */
+
+  /* Neutrals */
+  --foreground: #4B4B4B;       /* Eel */
+  --muted: #777777;            /* Wolf */
+  --muted-light: #AFAFAF;      /* Hare */
+  --border-color: #E5E5E5;     /* Swan */
+  --surface: #FFFFFF;          /* Snow */
+  --surface-raised: #F7F7F7;   /* Polar */
+  --background: #FFFFFF;       /* Snow */
+
+  /* Backward compatibility */
   --earth: #78350f;
   --earth-light: #a16207;
-  --saffron: #ea580c;
-  --saffron-light: #fdba74;
 }
+
+/* ============================================================
+   DARK MODE
+   ============================================================ */
+
+.dark {
+  --primary: #58CC02;
+  --primary-light: #89E219;
+  --primary-dark: #46A302;
+  --secondary: #1CB0F6;
+  --secondary-light: #7AD6FF;
+  --accent: #FF9600;
+  --accent-light: #FFB94D;
+  --saffron: #FFC800;
+  --saffron-light: #FFE066;
+  --error: #FF4B4B;
+  --info: #1CB0F6;
+  --warning: #FFC800;
+  --foreground: #E5E5E5;
+  --muted: #AFAFAF;
+  --muted-light: #777777;
+  --border-color: #3a3a4a;
+  --surface: #1e1e2e;
+  --surface-raised: #2a2a3a;
+  --background: #16161e;
+  --earth: #a16207;
+  --earth-light: #ca8a04;
+}
+
+.dark body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.dark .btn-3d-white {
+  background-color: var(--surface);
+  color: var(--foreground);
+  border-color: var(--border-color);
+}
+
+.dark .duo-card {
+  background: var(--surface);
+  border-color: var(--border-color);
+}
+
+.dark .duo-input {
+  background: var(--surface);
+  border-color: var(--border-color);
+  color: var(--foreground);
+}
+
+/* ============================================================
+   BASE LAYER
+   ============================================================ */
 
 @layer base {
   html {
@@ -69,7 +142,8 @@
   body {
     background: var(--background);
     color: var(--foreground);
-    font-family: var(--font-sans, system-ui, -apple-system, sans-serif);
+    font-family: var(--font-sans);
+    font-size: 1rem;
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -77,9 +151,33 @@
     overflow-x: hidden;
   }
 
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--foreground);
+    letter-spacing: -0.01em;
+  }
+
+  a {
+    color: var(--secondary);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  a:hover {
+    color: #1899D6;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
   /* Focus styles for accessibility */
   :focus-visible {
-    outline: 3px solid var(--primary);
+    outline: 3px solid var(--secondary);
     outline-offset: 2px;
     border-radius: 4px;
   }
@@ -99,145 +197,182 @@
     width: 6px;
     height: 6px;
   }
+
   ::-webkit-scrollbar-track {
     background: var(--surface-raised);
   }
+
   ::-webkit-scrollbar-thumb {
     background: var(--muted-light);
     border-radius: 3px;
   }
+
   ::-webkit-scrollbar-thumb:hover {
     background: var(--muted);
   }
-
-  /* Base heading styles — only set weight and line-height, not size
-     (let Tailwind utilities like text-3xl, text-4xl, text-5xl control size) */
-  h1, h2, h3, h4, h5, h6 {
-    line-height: 1.2;
-    font-weight: 700;
-    color: var(--foreground);
-    letter-spacing: -0.01em;
-  }
-
-  a {
-    color: var(--primary);
-    text-decoration: none;
-    font-weight: 500;
-  }
-  a:hover {
-    color: var(--primary-dark);
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  /* Smooth transitions only on interactive elements */
-  a, button, input, select, textarea {
-    transition-property: color, background-color, border-color, box-shadow, opacity;
-    transition-duration: 0.15s;
-    transition-timing-function: ease;
-  }
 }
 
-/* High-contrast utility for outdoor readability */
-@media (prefers-contrast: high) {
-  :root {
-    --foreground: #000000;
-    --background: #ffffff;
-    --primary: #14532d;
-    --muted: #44403c;
-    --border-color: #44403c;
-  }
-}
+/* ============================================================
+   3D BUTTONS — Duolingo Signature Style
+   ============================================================ */
 
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-/* Custom Playful 3D Buttons (Duolingo Style) */
-.btn-3d-saffron {
-  background-color: var(--saffron);
-  color: #ffffff !important;
-  border-bottom: 5px solid #9a3412; /* Dark saffron shadow */
-  border-radius: 16px;
-  font-weight: 800;
+.btn-3d-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  transform: translateY(0);
-  transition: transform 0.1s ease, border-bottom-width 0.1s ease, background-color 0.2s ease;
+  gap: 8px;
+  padding: 13px 24px;
+  border: none;
+  border-radius: 16px;
+  background-color: var(--primary);
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.9375rem;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 5px 0 var(--primary-dark);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  -webkit-tap-highlight-color: transparent;
 }
+
+.btn-3d-primary:hover {
+  filter: brightness(1.05);
+}
+
+.btn-3d-primary:active {
+  transform: translateY(5px);
+  box-shadow: none;
+}
+
+.btn-3d-primary:disabled {
+  background-color: var(--border-color);
+  color: var(--muted-light);
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+  filter: none;
+}
+
+.btn-3d-saffron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 24px;
+  border: none;
+  border-radius: 16px;
+  background-color: var(--saffron);
+  color: #4B4B4B;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.9375rem;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 5px 0 #E6B400;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
 .btn-3d-saffron:hover {
-  background-color: #f97316; /* Lighter orange */
-  transform: translateY(-1px);
-  border-bottom-width: 6px;
+  filter: brightness(1.05);
 }
+
 .btn-3d-saffron:active {
   transform: translateY(5px);
-  border-bottom-width: 0px;
+  box-shadow: none;
+}
+
+.btn-3d-saffron:disabled {
+  background-color: var(--border-color);
+  color: var(--muted-light);
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+  filter: none;
 }
 
 .btn-3d-white {
-  background-color: #ffffff;
-  color: var(--primary) !important;
-  border: 2px solid var(--border-color);
-  border-bottom: 5px solid var(--border-color);
-  border-radius: 16px;
-  font-weight: 800;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  transform: translateY(0);
-  transition: transform 0.1s ease, border-bottom-width 0.1s ease, background-color 0.2s ease;
+  gap: 8px;
+  padding: 13px 24px;
+  border: 2px solid var(--border-color);
+  border-radius: 16px;
+  background-color: #ffffff;
+  color: var(--foreground);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.9375rem;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 5px 0 var(--border-color);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  -webkit-tap-highlight-color: transparent;
 }
+
 .btn-3d-white:hover {
   background-color: var(--surface-raised);
-  transform: translateY(-1px);
-  border-bottom-width: 6px;
 }
+
 .btn-3d-white:active {
   transform: translateY(5px);
-  border-bottom-width: 0px;
+  box-shadow: none;
 }
 
-.btn-3d-primary {
-  background-color: var(--primary);
-  color: #ffffff !important;
-  border-bottom: 5px solid var(--primary-dark);
-  border-radius: 12px;
-  font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transform: translateY(0);
-  transition: transform 0.1s ease, border-bottom-width 0.1s ease, background-color 0.2s ease;
-}
-.btn-3d-primary:hover {
-  background-color: var(--primary-light);
-  border-bottom-color: var(--primary);
-  transform: translateY(-1px);
-  border-bottom-width: 6px;
-}
-.btn-3d-primary:active {
-  transform: translateY(5px);
-  border-bottom-width: 0px;
+.btn-3d-white:disabled {
+  background-color: var(--border-color);
+  color: var(--muted-light);
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
 }
 
-/* Duolingo tactile progress/timeline step */
+/* ============================================================
+   COMPONENTS — Cards, Inputs, Timeline
+   ============================================================ */
+
+.duo-card {
+  background: #ffffff;
+  border: 2px solid var(--border-color);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 2px 0 var(--border-color);
+}
+
+.duo-input {
+  padding: 14px 16px;
+  border: 2px solid var(--border-color);
+  border-radius: 16px;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--foreground);
+  background: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.duo-input:focus {
+  border-color: var(--secondary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(28, 176, 246, 0.2);
+}
+
+.duo-input::placeholder {
+  color: var(--muted-light);
+}
+
+/* Stepper / Timeline dashed connector */
 .stepper-dashed-path {
   position: relative;
 }
+
 .stepper-dashed-path::after {
   content: '';
   position: absolute;
@@ -258,7 +393,10 @@
   }
 }
 
-/* Floating animation for mockups */
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+
 @keyframes float {
   0%, 100% {
     transform: translateY(0);
@@ -268,4 +406,29 @@
   }
 }
 
+/* ============================================================
+   HIGH CONTRAST
+   ============================================================ */
 
+@media (prefers-contrast: high) {
+  :root {
+    --foreground: #000000;
+    --background: #ffffff;
+    --primary: #46A302;
+    --muted: #44403c;
+    --border-color: #44403c;
+  }
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

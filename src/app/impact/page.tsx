@@ -109,30 +109,39 @@ export default function ImpactPage() {
   return (
     <>
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-surface/95 backdrop-blur-sm border-b border-border">
+      <nav className="sticky top-0 z-50 bg-surface/95 backdrop-blur-sm border-b-2 border-border/80">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold text-primary flex items-center gap-2">
-            <svg className="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-            KisanAI
+          <Link href="/" className="text-xl font-extrabold text-white flex items-center gap-2 tracking-tight">
+            <div className="w-8 h-8 rounded-lg overflow-hidden bg-white flex items-center justify-center border border-white/20">
+              <img src="/logo.png" alt="KisanAI Logo" className="w-7 h-7 object-contain" />
+            </div>
+            <span className="text-foreground">KisanAI</span>
           </Link>
-          <div className="hidden md:flex items-center gap-6 text-sm font-medium">
-            <Link href="/government" className="text-muted hover:text-primary">Government</Link>
-            <Link href="/investors" className="text-muted hover:text-primary">Investors</Link>
-            <Link href="/partners" className="text-muted hover:text-primary">Partners</Link>
-            <Link href="/research" className="text-muted hover:text-primary">Research</Link>
-            <Link href="/impact" className="text-primary font-semibold">Impact</Link>
-            <Link href="/application" className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark">Try KisanAI</Link>
+          <div className="hidden md:flex items-center gap-6 text-sm font-bold">
+            <Link href="/government" className="text-muted hover:text-primary transition-colors">Government</Link>
+            <Link href="/investors" className="text-muted hover:text-primary transition-colors">Investors</Link>
+            <Link href="/partners" className="text-muted hover:text-primary transition-colors">Partners</Link>
+            <Link href="/research" className="text-muted hover:text-primary transition-colors">Research</Link>
+            <Link href="/impact" className="text-primary border-b-2 border-primary pb-0.5">Impact</Link>
+            <Link 
+              href="/application" 
+              className="btn-3d-primary px-4 py-2 text-xs shadow-[0_3px_0_var(--primary-dark)]"
+            >
+              Try KisanAI
+            </Link>
           </div>
-          <div className="md:hidden"><Link href="/" className="text-primary font-semibold text-sm">Home</Link></div>
+          <div className="md:hidden">
+            <Link href="/" className="text-primary font-bold text-sm">Home</Link>
+          </div>
         </div>
       </nav>
 
       <main>
         {/* Hero */}
-        <section className="bg-gradient-to-b from-primary-dark to-primary text-white py-20 sm:py-28">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-            <p className="text-primary-light font-semibold text-sm tracking-wide uppercase mb-4">Impact</p>
-            <h1 className="text-4xl sm:text-5xl font-bold leading-tight text-white">Measuring what matters</h1>
+        <section className="bg-gradient-to-b from-primary-dark to-primary text-white py-20 sm:py-28 border-b-4 border-primary-dark">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
+            <p className="text-amber-300 font-bold text-sm tracking-wide uppercase mb-4">Impact</p>
+            <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight text-white tracking-tight">Measuring what matters</h1>
             <p className="mt-6 text-lg sm:text-xl text-green-100 leading-relaxed max-w-2xl mx-auto">We have designed a comprehensive measurement framework. These metrics are pilot-ready -- the infrastructure is in place, but real data collection begins with our first pilots.</p>
           </div>
         </section>
@@ -210,8 +219,8 @@ export default function ImpactPage() {
             <h2 className="text-3xl sm:text-4xl font-bold text-white">Help us generate real data</h2>
             <p className="mt-4 text-lg text-amber-100 leading-relaxed">The best way to validate these metrics is to run a pilot. If you are an FPO, NGO, KVK, or government body, let us measure impact together.</p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/government" className="inline-flex items-center justify-center px-8 py-4 bg-white text-earth font-bold rounded-xl text-lg hover:bg-amber-50">Government Pilots</Link>
-              <Link href="/partners" className="inline-flex items-center justify-center px-8 py-4 border-2 border-white/30 text-white font-bold rounded-xl text-lg hover:bg-white/10">Become a Partner</Link>
+              <Link href="/government" className="btn-3d-saffron text-amber-950 font-extrabold shadow-[0_5px_0_#9a3412] px-8 py-4 text-lg">Government Pilots</Link>
+              <Link href="/partners" className="btn-3d-white text-foreground shadow-[0_5px_0_var(--border-color)] px-8 py-4 text-lg">Become a Partner</Link>
             </div>
           </div>
         </section>
@@ -221,7 +230,7 @@ export default function ImpactPage() {
       <footer className="bg-foreground text-white py-12">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-            <div><Link href="/" className="text-lg font-bold text-white flex items-center gap-2 mb-4"><svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>KisanAI</Link><p className="text-gray-400 text-sm leading-relaxed">AI farming assistant for every Indian farmer.</p></div>
+            <div><Link href="/" className="text-lg font-extrabold text-white flex items-center gap-2 mb-4 tracking-tight"><div className="w-8 h-8 rounded-lg overflow-hidden bg-white flex items-center justify-center border border-white/20"><img src="/logo.png" alt="KisanAI Logo" className="w-7 h-7 object-contain" /></div><span>KisanAI</span></Link><p className="text-gray-400 text-sm leading-relaxed">AI farming assistant for every Indian farmer.</p></div>
             <div><h4 className="font-semibold text-white mb-3">Product</h4><ul className="space-y-2 text-sm text-gray-400"><li><Link href="/application" className="hover:text-white transition-colors">Try KisanAI</Link></li><li><Link href="/impact" className="hover:text-white transition-colors">Impact</Link></li><li><Link href="/research" className="hover:text-white transition-colors">Research</Link></li></ul></div>
             <div><h4 className="font-semibold text-white mb-3">Organisations</h4><ul className="space-y-2 text-sm text-gray-400"><li><Link href="/government" className="hover:text-white transition-colors">Government</Link></li><li><Link href="/investors" className="hover:text-white transition-colors">Investors</Link></li><li><Link href="/partners" className="hover:text-white transition-colors">Partners</Link></li></ul></div>
             <div><h4 className="font-semibold text-white mb-3">Legal</h4><ul className="space-y-2 text-sm text-gray-400"><li><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li><li><Link href="/terms" className="hover:text-white transition-colors">Terms of Use</Link></li></ul></div>
