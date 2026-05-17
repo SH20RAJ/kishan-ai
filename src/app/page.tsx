@@ -122,26 +122,26 @@ interface WaitlistInlineProps {
 function WaitlistInline({ t }: WaitlistInlineProps) {
   return (
     <form className="mt-8 flex flex-col sm:flex-row gap-3 max-w-xl mx-auto" action="/api/waitlist" method="POST">
-      <input 
-        type="text" 
-        name="name" 
-        placeholder={t.waitlist.name_placeholder} 
+      <input
+        type="text"
+        name="name"
+        placeholder={t.waitlist.name_placeholder}
         required
-        className="flex-1 px-4 py-3.5 rounded-2xl bg-white/10 border-2 border-white/20 text-white placeholder:text-green-200 focus:outline-none focus:border-saffron focus:ring-2 focus:ring-saffron/20 transition-all" 
-        aria-label="Your name" 
+        className="duo-input flex-1 bg-white/10 border-white/20 text-white placeholder:text-green-200 focus:border-[#FFC800] focus:ring-2 focus:ring-[#FFC800]/20"
+        aria-label="Your name"
       />
-      <input 
-        type="tel" 
-        name="phone" 
-        placeholder={t.waitlist.phone_placeholder} 
+      <input
+        type="tel"
+        name="phone"
+        placeholder={t.waitlist.phone_placeholder}
         required
-        className="flex-1 px-4 py-3.5 rounded-2xl bg-white/10 border-2 border-white/20 text-white placeholder:text-green-200 focus:outline-none focus:border-saffron focus:ring-2 focus:ring-saffron/20 transition-all" 
-        aria-label="Phone number" 
+        className="duo-input flex-1 bg-white/10 border-white/20 text-white placeholder:text-green-200 focus:border-[#FFC800] focus:ring-2 focus:ring-[#FFC800]/20"
+        aria-label="Phone number"
       />
       <input type="hidden" name="state" value="Unknown" />
-      <button 
-        type="submit" 
-        className="btn-3d-saffron px-6 py-3.5 text-base shadow-[0_4px_0_#9a3412] whitespace-nowrap cursor-pointer"
+      <button
+        type="submit"
+        className="btn-3d-saffron px-6 py-3.5 text-base whitespace-nowrap cursor-pointer"
       >
         {t.waitlist.btn}
       </button>
@@ -178,72 +178,72 @@ export default function HomePage() {
   return (
     <>
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-surface/95 backdrop-blur-sm border-b border-border">
+      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b-2 border-[#E5E5E5]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="text-xl font-extrabold text-primary flex items-center gap-2 tracking-tight">
-            <div className="w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center border border-primary/20 bg-white">
+          <Link href="/" className="text-xl font-extrabold text-[#58CC02] flex items-center gap-2 tracking-tight">
+            <div className="w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center border-2 border-[#E5E5E5] bg-white">
               <img src="/logo.png" alt="KisanAI Logo" className="w-7 h-7 object-contain" />
             </div>
             KisanAI
           </Link>
-          <div className="hidden md:flex items-center gap-6 text-sm font-semibold">
-            <Link href="/government" className="text-muted hover:text-primary transition-colors">{t.nav.government}</Link>
-            <Link href="/investors" className="text-muted hover:text-primary transition-colors">{t.nav.investors}</Link>
-            <Link href="/partners" className="text-muted hover:text-primary transition-colors">{t.nav.partners}</Link>
-            <Link href="/research" className="text-muted hover:text-primary transition-colors">{t.nav.research}</Link>
-            <Link href="/impact" className="text-muted hover:text-primary transition-colors">{t.nav.impact}</Link>
-            <Link href="/application" className="btn-3d-primary px-5 py-2 text-sm shadow-[0_3px_0_var(--primary-dark)]">{t.nav.try}</Link>
+          <div className="hidden md:flex items-center gap-6 text-sm font-bold">
+            <Link href="/government" className="text-[#777777] hover:text-[#58CC02] transition-colors">{t.nav.government}</Link>
+            <Link href="/investors" className="text-[#777777] hover:text-[#58CC02] transition-colors">{t.nav.investors}</Link>
+            <Link href="/partners" className="text-[#777777] hover:text-[#58CC02] transition-colors">{t.nav.partners}</Link>
+            <Link href="/research" className="text-[#777777] hover:text-[#58CC02] transition-colors">{t.nav.research}</Link>
+            <Link href="/impact" className="text-[#777777] hover:text-[#58CC02] transition-colors">{t.nav.impact}</Link>
+            <Link href="/application" className="btn-3d-primary px-5 py-2 text-sm">{t.nav.try}</Link>
           </div>
           <div className="md:hidden">
-            <Link href="/application" className="btn-3d-primary px-4 py-2 text-xs shadow-[0_3px_0_var(--primary-dark)]">{t.nav.try}</Link>
+            <Link href="/application" className="btn-3d-primary px-4 py-2 text-xs">{t.nav.try}</Link>
           </div>
         </div>
       </nav>
 
       <main>
         {/* Hero */}
-        <section className="relative overflow-hidden bg-gradient-to-b from-primary-dark to-primary text-white border-b-4 border-primary-dark">
+        <section className="relative overflow-hidden bg-gradient-to-b from-[#46A302] to-[#58CC02] text-white border-b-4 border-[#46A302]">
           <div className="absolute inset-0 opacity-15">
-            <div className="absolute top-20 left-10 w-72 h-72 bg-saffron rounded-full blur-3xl" />
-            <div className="absolute bottom-10 right-20 w-96 h-96 bg-primary-light rounded-full blur-3xl" />
+            <div className="absolute top-20 left-10 w-72 h-72 bg-[#FF9600] rounded-full blur-3xl" />
+            <div className="absolute bottom-10 right-20 w-96 h-96 bg-[#89E219] rounded-full blur-3xl" />
           </div>
-          
+
           <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
             <div className="grid lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-7 text-left">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary-dark/50 border border-primary-light/20 text-primary-light text-xs font-bold uppercase tracking-wide mb-6">
-                  <span className="w-2.5 h-2.5 rounded-full bg-saffron animate-pulse" />
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#46A302]/50 border border-[#89E219]/20 text-[#89E219] text-xs font-extrabold uppercase tracking-wide mb-6">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#FF9600] animate-pulse" />
                   100% Free Krishi Seva
                 </div>
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight text-white tracking-tight">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] text-white tracking-tight">
                   {t.hero.title} <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-saffron-light to-yellow-200">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFC800] to-[#FFE066]">
                     {t.hero.subtitle}
                   </span>
                 </h1>
-                <p className="mt-6 text-lg sm:text-xl text-green-100 leading-relaxed max-w-2xl">
+                <p className="mt-6 text-lg sm:text-xl text-green-100 font-medium leading-relaxed max-w-2xl">
                   {t.hero.desc}
                 </p>
-                
+
                 {/* Visual Language Switcher Widget (Duolingo-Inspired) */}
-                <div className="mt-8 p-5 rounded-2xl bg-white/10 border border-white/15 max-w-xl">
-                  <p className="text-xs font-bold text-green-200 uppercase tracking-wider mb-3">{t.switcher}</p>
+                <div className="mt-8 p-5 rounded-2xl bg-white/10 border-2 border-white/15 max-w-xl">
+                  <p className="text-xs font-extrabold text-green-200 uppercase tracking-wider mb-3">{t.switcher}</p>
                   <div className="flex flex-wrap gap-2.5">
                     {[
-                      { code: "hinglish", label: "🇮🇳 Hinglish" },
-                      { code: "english", label: "🇬🇧 English" },
-                      { code: "hindi", label: "🇮🇳 हिंदी" },
-                      { code: "bangla", label: "🇮🇳 বাংলা" },
-                      { code: "marathi", label: "🇮🇳 मराठी" }
+                      { code: "hinglish", label: "\ud83c\uddee\ud83c\uddf3 Hinglish" },
+                      { code: "english", label: "\ud83c\uddec\ud83c\udde7 English" },
+                      { code: "hindi", label: "\ud83c\uddee\ud83c\uddf3 \u0939\u093f\u0902\u0926\u0940" },
+                      { code: "bangla", label: "\ud83c\uddee\ud83c\uddf3 \u09ac\u09be\u0982\u09b2\u09be" },
+                      { code: "marathi", label: "\ud83c\uddee\ud83c\uddf3 \u092e\u0930\u093e\u0920\u0940" }
                     ].map((item) => {
                       const isActive = lang === item.code;
                       return (
                         <button
                           key={item.code}
                           onClick={() => setLang(item.code as LanguageCode)}
-                          className={`px-3.5 py-2 rounded-xl font-bold text-sm transition-all cursor-pointer border-2 flex items-center gap-2 ${
+                          className={`px-3.5 py-2 rounded-2xl font-extrabold text-sm transition-all cursor-pointer border-2 flex items-center gap-2 min-h-[44px] min-w-[44px] ${
                             isActive
-                              ? "bg-white text-primary font-extrabold border-primary/20 shadow-[0_3px_0_rgba(22,101,52,0.25)] translate-y-0"
+                              ? "bg-white text-[#58CC02] border-[#E5E5E5] shadow-[0_3px_0_#E5E5E5]"
                               : "bg-white/10 text-white border-white/10 hover:bg-white/20 shadow-none"
                           }`}
                         >
@@ -257,7 +257,7 @@ export default function HomePage() {
                 <div className="mt-8 flex flex-col sm:flex-row gap-4">
                   <Link
                     href="/application"
-                    className="btn-3d-saffron px-8 py-4 text-lg inline-flex items-center gap-2 group shadow-[0_5px_0_#9a3412]"
+                    className="btn-3d-saffron px-8 py-4 text-lg inline-flex items-center gap-2 group"
                   >
                     {t.hero.cta}
                     <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -266,16 +266,45 @@ export default function HomePage() {
                   </Link>
                   <Link
                     href="/partners"
-                    className="btn-3d-white px-8 py-4 text-lg shadow-[0_5px_0_var(--border-color)]"
+                    className="btn-3d-white px-8 py-4 text-lg"
                   >
                     Partner with Us
                   </Link>
                 </div>
               </div>
-              
+
               <div className="lg:col-span-5 flex justify-center">
                 <div className="relative w-full max-w-[340px] sm:max-w-[380px] transition-transform hover:scale-[1.03] duration-300">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-saffron to-primary-light rounded-full blur-3xl opacity-20" />
+                  {/* Glowing dynamic background */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#FF9600] to-[#89E219] rounded-full blur-3xl opacity-20" />
+                  
+                  {/* Floating badge 1: Weather */}
+                  <div className="absolute top-12 -left-16 rotate-[-4deg] hover:rotate-0 bg-white/95 backdrop-blur-md rounded-2xl p-3 border-2 border-border shadow-[0_8px_30px_rgba(0,0,0,0.15)] flex items-center gap-3 z-20 pointer-events-none hidden sm:flex transition-all duration-300">
+                    <span className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-lg">🌦️</span>
+                    <div>
+                      <p className="text-[11px] font-bold text-muted uppercase tracking-wider">Weather Alert</p>
+                      <p className="text-xs font-extrabold text-foreground">Pune: 28°C • Cloudy</p>
+                    </div>
+                  </div>
+
+                  {/* Floating badge 2: Mandi Price */}
+                  <div className="absolute bottom-24 -right-16 rotate-[4deg] hover:rotate-0 bg-white/95 backdrop-blur-md rounded-2xl p-3 border-2 border-border shadow-[0_8px_30px_rgba(0,0,0,0.15)] flex items-center gap-3 z-20 pointer-events-none hidden sm:flex transition-all duration-300">
+                    <span className="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center text-lg">🌾</span>
+                    <div>
+                      <p className="text-[11px] font-bold text-muted uppercase tracking-wider">Mandi price</p>
+                      <p className="text-xs font-extrabold text-foreground">Wheat: ₹2,150/qtl <span className="text-primary font-black">+3.2%</span></p>
+                    </div>
+                  </div>
+
+                  {/* Floating badge 3: Disease diagnosis scan */}
+                  <div className="absolute bottom-8 -left-12 rotate-[-6deg] hover:rotate-0 bg-white/95 backdrop-blur-md rounded-2xl p-3 border-2 border-border shadow-[0_8px_30px_rgba(0,0,0,0.15)] flex items-center gap-3 z-20 pointer-events-none hidden sm:flex transition-all duration-300">
+                    <span className="w-10 h-10 rounded-xl bg-red-100 flex items-center justify-center text-lg">📸</span>
+                    <div>
+                      <p className="text-[11px] font-bold text-muted uppercase tracking-wider">Disease Scan</p>
+                      <p className="text-xs font-extrabold text-foreground">Fasal Rog Checked! 🟢</p>
+                    </div>
+                  </div>
+
                   <img
                     src="/hero-mockup.png"
                     alt="KisanAI Chat App Mockup showing disease diagnosis"
@@ -291,24 +320,23 @@ export default function HomePage() {
         </section>
 
         {/* Mascot Kino Welcome Section (Tactile UI) */}
-        <section className="py-12 bg-white border-b border-border overflow-hidden">
+        <section className="py-12 bg-white border-b-2 border-[#E5E5E5] overflow-hidden">
           <div className="max-w-4xl mx-auto px-4 sm:px-6">
-            <div className="flex flex-col md:flex-row items-center gap-8 bg-gradient-to-r from-green-50 to-amber-50/50 rounded-3xl p-8 border border-primary/10 relative">
-              <div className="flex-shrink-0 w-24 h-24 sm:w-28 sm:h-28 bg-white rounded-2xl border-2 border-primary/20 flex items-center justify-center overflow-hidden shadow-sm">
+            <div className="flex flex-col md:flex-row items-center gap-8 bg-[#F7F7F7] rounded-2xl p-8 border-2 border-[#E5E5E5] shadow-[0_2px_0_#E5E5E5] relative">
+              <div className="flex-shrink-0 w-24 h-24 sm:w-28 sm:h-28 bg-white rounded-2xl border-2 border-[#E5E5E5] flex items-center justify-center overflow-hidden shadow-[0_2px_0_#E5E5E5]">
                 <img src="/logo.png" alt="Kino the KisanAI Mascot" className="w-full h-full object-cover scale-[1.08]" />
               </div>
               <div className="relative flex-1">
                 {/* Speech bubble tail */}
-                <div className="hidden md:block absolute left-[-10px] top-1/2 -translate-y-1/2 w-4 h-4 bg-white border-l-2 border-b-2 border-primary/10 rotate-45" />
-                <div className="bg-white rounded-2xl p-6 shadow-[0_2px_8px_rgba(0,0,0,0.02)] border border-primary/5">
-                  <h3 className="text-lg font-extrabold text-primary flex items-center gap-1.5 mb-2">
-                    {t.kino.title}
-                    <img src="/logo.png" alt="Kino Mascot" className="w-5 h-5 object-contain" />
+                <div className="hidden md:block absolute left-[-10px] top-1/2 -translate-y-1/2 w-4 h-4 bg-white border-l-2 border-b-2 border-[#E5E5E5] rotate-45" />
+                <div className="bg-white rounded-2xl p-6 shadow-[0_2px_0_#E5E5E5] border-2 border-[#E5E5E5]">
+                  <h3 className="text-lg font-extrabold text-[#58CC02] flex items-center gap-1.5 mb-2">
+                    {t.kino.title} 🦜
                   </h3>
-                  <p className="text-muted leading-relaxed text-sm sm:text-base">
+                  <p className="text-[#777777] font-medium leading-relaxed text-sm sm:text-base">
                     &ldquo;{t.kino.bubble}&rdquo;
                   </p>
-                  <div className="mt-4 flex flex-wrap gap-4 text-xs font-bold text-primary">
+                  <div className="mt-4 flex flex-wrap gap-4 text-xs font-extrabold text-[#58CC02]">
                     <span className="flex items-center gap-1">✨ 100% Free</span>
                     <span className="flex items-center gap-1">📋 Verified Sources</span>
                     <span className="flex items-center gap-1">🛡️ Safe & Private</span>
@@ -320,23 +348,23 @@ export default function HomePage() {
         </section>
 
         {/* Problem */}
-        <section className="py-20 sm:py-28 bg-surface-raised border-b border-border">
+        <section className="py-20 sm:py-28 bg-[#F7F7F7] border-b-2 border-[#E5E5E5]">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="text-center max-w-2xl mx-auto mb-16">
-              <p className="text-saffron font-bold text-sm tracking-wide uppercase mb-3">{t.problems.tag}</p>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">{t.problems.title}</h2>
-              <p className="mt-4 text-lg text-muted">
+              <p className="text-[#FF9600] font-extrabold text-sm tracking-wide uppercase mb-3">{t.problems.tag}</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#4B4B4B] tracking-tight">{t.problems.title}</h2>
+              <p className="mt-4 text-lg text-[#777777] font-medium">
                 {t.problems.desc}
               </p>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {translatedProblems.map((p, i) => (
-                <article key={i} className="bg-surface rounded-3xl p-6 border border-border hover:border-primary/30 hover:shadow-[0_8px_30px_rgba(22,101,52,0.06)] hover:-translate-y-1 transition-all duration-300">
-                  <div className="w-14 h-14 rounded-2xl bg-red-50 text-error flex items-center justify-center mb-5 border border-red-100 shadow-[0_3px_0_rgba(239,68,68,0.1)]">
+                <article key={i} className="duo-card hover:border-[#58CC02]/30 hover:-translate-y-1 transition-all duration-300">
+                  <div className="w-14 h-14 rounded-2xl bg-[#FF4B4B]/10 text-[#FF4B4B] flex items-center justify-center mb-5 border-2 border-[#FF4B4B]/10 shadow-[0_3px_0_rgba(255,75,75,0.1)]">
                     {p.icon}
                   </div>
-                  <h3 className="text-lg font-extrabold text-foreground mb-2">{p.title}</h3>
-                  <p className="text-muted text-sm leading-relaxed">{p.desc}</p>
+                  <h3 className="text-lg font-extrabold text-[#4B4B4B] mb-2">{p.title}</h3>
+                  <p className="text-[#777777] font-medium text-sm leading-relaxed">{p.desc}</p>
                 </article>
               ))}
             </div>
@@ -347,20 +375,20 @@ export default function HomePage() {
         <section className="py-20 sm:py-28">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="text-center max-w-2xl mx-auto mb-16">
-              <p className="text-primary font-bold text-sm tracking-wide uppercase mb-3">{t.capabilities.tag}</p>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">{t.capabilities.title}</h2>
-              <p className="mt-4 text-lg text-muted">
+              <p className="text-[#58CC02] font-extrabold text-sm tracking-wide uppercase mb-3">{t.capabilities.tag}</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#4B4B4B] tracking-tight">{t.capabilities.title}</h2>
+              <p className="mt-4 text-lg text-[#777777] font-medium">
                 {t.capabilities.desc}
               </p>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {translatedModules.map((m, i) => (
-                <article key={i} className="bg-surface rounded-3xl p-8 border border-border hover:border-primary/30 hover:shadow-[0_12px_30px_rgba(22,101,52,0.05)] hover:-translate-y-1 transition-all duration-300 group">
-                  <div className="w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6 border-2 border-primary/5 shadow-[0_4px_0_rgba(22,101,52,0.08)] group-hover:shadow-none group-hover:translate-y-[4px] transition-all">
+                <article key={i} className="duo-card p-8 hover:border-[#58CC02]/30 hover:-translate-y-1 transition-all duration-300 group">
+                  <div className="w-16 h-16 rounded-2xl bg-[#58CC02]/10 text-[#58CC02] flex items-center justify-center mb-6 border-2 border-[#58CC02]/10 shadow-[0_4px_0_rgba(88,204,2,0.08)] group-hover:shadow-none group-hover:translate-y-[4px] transition-all">
                     {m.icon}
                   </div>
-                  <h3 className="text-xl font-extrabold text-foreground mb-2">{m.title}</h3>
-                  <p className="text-muted leading-relaxed text-sm">{m.desc}</p>
+                  <h3 className="text-xl font-extrabold text-[#4B4B4B] mb-2">{m.title}</h3>
+                  <p className="text-[#777777] font-medium leading-relaxed text-sm">{m.desc}</p>
                 </article>
               ))}
             </div>
@@ -368,28 +396,28 @@ export default function HomePage() {
         </section>
 
         {/* How it Works */}
-        <section className="py-20 sm:py-28 bg-surface-raised border-y border-border">
+        <section className="py-20 sm:py-28 bg-[#F7F7F7] border-y-2 border-[#E5E5E5]">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="text-center max-w-2xl mx-auto mb-20">
-              <p className="text-saffron font-bold text-sm tracking-wide uppercase mb-3">{t.steps.tag}</p>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">{t.steps.title}</h2>
-              <p className="mt-4 text-muted text-base">{t.steps.desc}</p>
+              <p className="text-[#FF9600] font-extrabold text-sm tracking-wide uppercase mb-3">{t.steps.tag}</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#4B4B4B] tracking-tight">{t.steps.title}</h2>
+              <p className="mt-4 text-[#777777] font-medium text-base">{t.steps.desc}</p>
             </div>
             <div className="grid md:grid-cols-3 gap-12 stepper-dashed-path">
               {translatedSteps.map((s, i) => (
                 <div key={i} className="text-center relative z-10 group">
-                  <div className="w-16 h-16 rounded-2xl bg-white text-primary text-2xl font-extrabold flex items-center justify-center mx-auto mb-6 border-2 border-primary/20 shadow-[0_4px_0_rgba(22,101,52,0.15)] group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-16 h-16 rounded-2xl bg-white text-[#58CC02] text-2xl font-extrabold flex items-center justify-center mx-auto mb-6 border-2 border-[#E5E5E5] shadow-[0_4px_0_#E5E5E5] group-hover:scale-110 transition-transform duration-300">
                     {s.step}
                   </div>
-                  <h3 className="text-xl font-extrabold text-foreground mb-3">{s.title}</h3>
-                  <p className="text-muted leading-relaxed max-w-xs mx-auto text-sm">{s.desc}</p>
+                  <h3 className="text-xl font-extrabold text-[#4B4B4B] mb-3">{s.title}</h3>
+                  <p className="text-[#777777] font-medium leading-relaxed max-w-xs mx-auto text-sm">{s.desc}</p>
                 </div>
               ))}
             </div>
             <div className="mt-16 text-center">
               <Link
                 href="/application"
-                className="btn-3d-saffron px-8 py-4 text-lg inline-flex items-center gap-2 group shadow-[0_5px_0_#9a3412]"
+                className="btn-3d-saffron px-8 py-4 text-lg inline-flex items-center gap-2 group"
               >
                 {t.hero.cta}
                 <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -404,21 +432,21 @@ export default function HomePage() {
         <section className="py-20 sm:py-28">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="text-center max-w-2xl mx-auto mb-16">
-              <p className="text-primary font-bold text-sm tracking-wide uppercase mb-3">{t.trust.tag}</p>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">{t.trust.title}</h2>
-              <p className="mt-4 text-lg text-muted">
+              <p className="text-[#58CC02] font-extrabold text-sm tracking-wide uppercase mb-3">{t.trust.tag}</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#4B4B4B] tracking-tight">{t.trust.title}</h2>
+              <p className="mt-4 text-lg text-[#777777] font-medium">
                 {t.trust.desc}
               </p>
             </div>
             <div className="grid sm:grid-cols-2 gap-8">
               {translatedTrustPoints.map((tPoint, i) => (
-                <div key={i} className="flex gap-5 p-6 rounded-3xl bg-surface border border-border shadow-sm">
-                  <div className="w-14 h-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 border border-primary/10">
+                <div key={i} className="flex gap-5 p-6 duo-card">
+                  <div className="w-14 h-14 rounded-2xl bg-[#58CC02]/10 text-[#58CC02] flex items-center justify-center flex-shrink-0 border-2 border-[#58CC02]/10 shadow-[0_3px_0_rgba(88,204,2,0.08)]">
                     {tPoint.icon}
                   </div>
                   <div>
-                    <h3 className="text-lg font-extrabold text-foreground mb-1">{tPoint.title}</h3>
-                    <p className="text-muted leading-relaxed text-sm">{tPoint.desc}</p>
+                    <h3 className="text-lg font-extrabold text-[#4B4B4B] mb-1">{tPoint.title}</h3>
+                    <p className="text-[#777777] font-medium leading-relaxed text-sm">{tPoint.desc}</p>
                   </div>
                 </div>
               ))}
@@ -427,22 +455,22 @@ export default function HomePage() {
         </section>
 
         {/* Government / FPO CTA */}
-        <section className="py-20 sm:py-28 bg-gradient-to-br from-earth to-earth-light text-white border-y-4 border-earth">
+        <section className="py-20 sm:py-28 bg-gradient-to-br from-[#FF9600] to-[#FFC800] text-white border-y-4 border-[#E68600]">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">{t.pilot.title}</h2>
-            <p className="mt-4 text-lg text-amber-100 max-w-2xl mx-auto leading-relaxed">
+            <p className="mt-4 text-lg text-white/80 max-w-2xl mx-auto leading-relaxed font-medium">
               {t.pilot.desc}
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-5 justify-center">
               <Link
                 href="/government"
-                className="btn-3d-white px-8 py-4 text-lg shadow-[0_5px_0_rgba(0,0,0,0.15)]"
+                className="btn-3d-white px-8 py-4 text-lg"
               >
                 {t.pilot.gov_btn}
               </Link>
               <Link
                 href="/partners"
-                className="btn-3d-saffron px-8 py-4 text-lg shadow-[0_5px_0_#9a3412]"
+                className="btn-3d-saffron px-8 py-4 text-lg"
               >
                 {t.pilot.partner_btn}
               </Link>
@@ -451,45 +479,45 @@ export default function HomePage() {
         </section>
 
         {/* Investor Teaser */}
-        <section className="py-20 sm:py-28 bg-surface-raised border-b border-border">
+        <section className="py-20 sm:py-28 bg-[#F7F7F7] border-b-2 border-[#E5E5E5]">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
-                <p className="text-secondary font-bold text-sm tracking-wide uppercase mb-3">{t.investors.tag}</p>
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">{t.investors.title}</h2>
-                <p className="mt-4 text-lg text-muted leading-relaxed">
+                <p className="text-[#1CB0F6] font-extrabold text-sm tracking-wide uppercase mb-3">{t.investors.tag}</p>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-[#4B4B4B] tracking-tight">{t.investors.title}</h2>
+                <p className="mt-4 text-lg text-[#777777] font-medium leading-relaxed">
                   {t.investors.desc1}
                 </p>
-                <p className="mt-4 text-muted leading-relaxed">
+                <p className="mt-4 text-[#777777] font-medium leading-relaxed">
                   {t.investors.desc2}
                 </p>
                 <Link
                   href="/investors"
-                  className="btn-3d-primary px-6 py-3 mt-6 text-sm shadow-[0_4px_0_var(--primary-dark)]"
+                  className="btn-3d-primary px-6 py-3 mt-6 text-sm"
                 >
                   {t.investors.btn}
                 </Link>
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <div className="bg-surface rounded-3xl p-6 border-2 border-border shadow-[0_4px_0_rgba(0,0,0,0.03)] hover:shadow-none hover:translate-y-[4px] transition-all">
-                  <p className="text-3xl font-extrabold text-primary">9.7 Cr</p>
-                  <p className="text-sm font-semibold text-muted mt-1">Digitally traceable farmers (PM-KISAN)</p>
+                <div className="duo-card p-6 hover:shadow-none hover:translate-y-[2px] transition-all">
+                  <p className="text-3xl font-extrabold text-[#58CC02]">9.7 Cr</p>
+                  <p className="text-sm font-semibold text-[#777777] mt-1">Digitally traceable farmers (PM-KISAN)</p>
                 </div>
-                <div className="bg-surface rounded-3xl p-6 border-2 border-border shadow-[0_4px_0_rgba(0,0,0,0.03)] hover:shadow-none hover:translate-y-[4px] transition-all">
-                  <p className="text-3xl font-extrabold text-primary">41.7%</p>
-                  <p className="text-sm font-semibold text-muted mt-1">Rural internet penetration</p>
+                <div className="duo-card p-6 hover:shadow-none hover:translate-y-[2px] transition-all">
+                  <p className="text-3xl font-extrabold text-[#58CC02]">41.7%</p>
+                  <p className="text-sm font-semibold text-[#777777] mt-1">Rural internet penetration</p>
                 </div>
-                <div className="bg-surface rounded-3xl p-6 border-2 border-border shadow-[0_4px_0_rgba(0,0,0,0.03)] hover:shadow-none hover:translate-y-[4px] transition-all">
-                  <p className="text-3xl font-extrabold text-primary">99%</p>
-                  <p className="text-sm font-semibold text-muted mt-1">Districts with 5G coverage</p>
+                <div className="duo-card p-6 hover:shadow-none hover:translate-y-[2px] transition-all">
+                  <p className="text-3xl font-extrabold text-[#58CC02]">99%</p>
+                  <p className="text-sm font-semibold text-[#777777] mt-1">Districts with 5G coverage</p>
                 </div>
-                <div className="bg-surface rounded-3xl p-6 border-2 border-border shadow-[0_4px_0_rgba(0,0,0,0.03)] hover:shadow-none hover:translate-y-[4px] transition-all">
-                  <p className="text-3xl font-extrabold text-primary">Rs 58.2B</p>
-                  <p className="text-sm font-semibold text-muted mt-1">Conservative TAM</p>
+                <div className="duo-card p-6 hover:shadow-none hover:translate-y-[2px] transition-all">
+                  <p className="text-3xl font-extrabold text-[#58CC02]">Rs 58.2B</p>
+                  <p className="text-sm font-semibold text-[#777777] mt-1">Conservative TAM</p>
                 </div>
               </div>
             </div>
-            <p className="mt-6 text-xs text-muted italic">Market figures are planning assumptions based on public data, not audited projections. See Research page for methodology.</p>
+            <p className="mt-6 text-xs text-[#777777] italic">Market figures are planning assumptions based on public data, not audited projections. See Research page for methodology.</p>
           </div>
         </section>
 
@@ -497,37 +525,37 @@ export default function HomePage() {
         <section className="py-20 sm:py-28">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="text-center max-w-2xl mx-auto mb-16">
-              <p className="text-primary font-bold text-sm tracking-wide uppercase mb-3">{t.research.tag}</p>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">{t.research.title}</h2>
-              <p className="mt-4 text-lg text-muted">
+              <p className="text-[#58CC02] font-extrabold text-sm tracking-wide uppercase mb-3">{t.research.tag}</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#4B4B4B] tracking-tight">{t.research.title}</h2>
+              <p className="mt-4 text-lg text-[#777777] font-medium">
                 {t.research.desc}
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
-              <article className="bg-surface rounded-3xl p-6 border border-border">
-                <h3 className="text-lg font-extrabold text-foreground mb-3">{t.research.pain_title}</h3>
-                <blockquote className="text-muted italic border-l-4 border-saffron pl-4 mb-4">
+              <article className="duo-card p-6">
+                <h3 className="text-lg font-extrabold text-[#4B4B4B] mb-3">{t.research.pain_title}</h3>
+                <blockquote className="text-[#777777] font-medium italic border-l-4 border-[#FF9600] pl-4 mb-4">
                   &ldquo;{t.research.pain_quote}&rdquo;
                 </blockquote>
-                <p className="text-sm text-muted">
+                <p className="text-sm text-[#777777] font-medium">
                   {t.research.pain_desc}
                 </p>
               </article>
-              <article className="bg-surface rounded-3xl p-6 border border-border">
-                <h3 className="text-lg font-extrabold text-foreground mb-3">{t.research.market_title}</h3>
-                <p className="text-muted text-sm mb-4 leading-relaxed">
+              <article className="duo-card p-6">
+                <h3 className="text-lg font-extrabold text-[#4B4B4B] mb-3">{t.research.market_title}</h3>
+                <p className="text-[#777777] font-medium text-sm mb-4 leading-relaxed">
                   {t.research.market_desc}
                 </p>
-                <p className="text-xs text-muted">
+                <p className="text-xs text-[#777777] font-medium">
                   {t.research.market_sub}
                 </p>
               </article>
-              <article className="bg-surface rounded-3xl p-6 border border-border">
-                <h3 className="text-lg font-extrabold text-foreground mb-3">{t.research.tech_title}</h3>
-                <p className="text-muted text-sm mb-4 leading-relaxed">
+              <article className="duo-card p-6">
+                <h3 className="text-lg font-extrabold text-[#4B4B4B] mb-3">{t.research.tech_title}</h3>
+                <p className="text-[#777777] font-medium text-sm mb-4 leading-relaxed">
                   {t.research.tech_desc}
                 </p>
-                <p className="text-xs text-muted">
+                <p className="text-xs text-[#777777] font-medium">
                   {t.research.tech_sub}
                 </p>
               </article>
@@ -535,7 +563,7 @@ export default function HomePage() {
             <div className="mt-10 text-center">
               <Link
                 href="/research"
-                className="btn-3d-white px-6 py-3 text-sm shadow-[0_4px_0_var(--border-color)]"
+                className="btn-3d-white px-6 py-3 text-sm"
               >
                 {t.research.btn}
               </Link>
@@ -544,22 +572,22 @@ export default function HomePage() {
         </section>
 
         {/* FAQ */}
-        <section className="py-20 sm:py-28 bg-surface-raised border-t border-border">
+        <section className="py-20 sm:py-28 bg-[#F7F7F7] border-t-2 border-[#E5E5E5]">
           <div className="max-w-3xl mx-auto px-4 sm:px-6">
             <div className="text-center mb-16">
-              <p className="text-saffron font-bold text-sm tracking-wide uppercase mb-3">{t.faq.tag}</p>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">{t.faq.title}</h2>
+              <p className="text-[#FF9600] font-extrabold text-sm tracking-wide uppercase mb-3">{t.faq.tag}</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#4B4B4B] tracking-tight">{t.faq.title}</h2>
             </div>
             <div className="space-y-4">
               {t.faq.items.map((faq, i) => (
-                <details key={i} className="group bg-surface rounded-2xl border-2 border-border overflow-hidden">
-                  <summary className="flex items-center justify-between px-6 py-5 cursor-pointer font-extrabold text-foreground hover:text-primary transition-colors list-none">
+                <details key={i} className="group bg-white rounded-2xl border-2 border-[#E5E5E5] shadow-[0_2px_0_#E5E5E5] overflow-hidden">
+                  <summary className="flex items-center justify-between px-6 py-5 cursor-pointer font-extrabold text-[#4B4B4B] hover:text-[#58CC02] transition-colors list-none min-h-[44px]">
                     <span className="pr-4">{faq.q}</span>
-                    <svg className="w-5 h-5 text-muted flex-shrink-0 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <svg className="w-5 h-5 text-[#777777] flex-shrink-0 group-open:rotate-180 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                     </svg>
                   </summary>
-                  <div className="px-6 pb-6 text-muted text-sm leading-relaxed border-t border-border pt-4 bg-surface-raised/40">
+                  <div className="faq-answer px-6 pb-6 text-[#777777] font-medium text-sm leading-relaxed border-t-2 border-[#E5E5E5] pt-4 bg-[#F7F7F7]/40">
                     {faq.a}
                   </div>
                 </details>
@@ -569,63 +597,63 @@ export default function HomePage() {
         </section>
 
         {/* Final CTA + Waitlist */}
-        <section className="py-20 sm:py-28 bg-gradient-to-b from-primary-dark to-primary text-white border-t-4 border-primary-dark">
+        <section className="py-20 sm:py-28 bg-gradient-to-b from-[#46A302] to-[#58CC02] text-white border-t-4 border-[#46A302]">
           <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center relative z-10">
-            <div className="w-16 h-16 mx-auto mb-6 bg-white rounded-2xl flex items-center justify-center border-2 border-white/20 shadow-lg">
-              <img src="/logo.png" alt="KisanAI Mascot" className="w-14 h-14 object-cover scale-[1.05]" />
+            <div className="w-16 h-16 mx-auto mb-6 bg-white rounded-2xl flex items-center justify-center border-2 border-white/20 shadow-[0_4px_0_rgba(0,0,0,0.1)]">
+              <span className="text-3xl">🦜</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">{t.waitlist.title}</h2>
-            <p className="mt-4 text-lg text-green-100 leading-relaxed">
+            <p className="mt-4 text-lg text-green-100 font-medium leading-relaxed">
               {t.waitlist.desc}
             </p>
             <WaitlistInline t={t} />
-            <p className="mt-5 text-xs text-green-200">{t.waitlist.spam_note}</p>
+            <p className="mt-5 text-xs text-green-200 font-medium">{t.waitlist.spam_note}</p>
           </div>
         </section>
       </main>
 
       {/* Footer */}
-      <footer className="bg-foreground text-white py-16 border-t border-gray-800">
+      <footer className="bg-[#4B4B4B] text-white py-16 border-t-2 border-[#E5E5E5]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             <div>
               <Link href="/" className="text-xl font-extrabold text-white flex items-center gap-2 mb-4 tracking-tight">
-                <div className="w-7 h-7 rounded-md overflow-hidden bg-white flex items-center justify-center border border-white/20">
+                <div className="w-7 h-7 rounded-lg overflow-hidden bg-white flex items-center justify-center border-2 border-white/20">
                   <img src="/logo.png" alt="KisanAI Logo" className="w-6 h-6 object-contain" />
                 </div>
                 KisanAI
               </Link>
-              <p className="text-gray-400 text-sm leading-relaxed">
+              <p className="text-[#AFAFAF] text-sm font-medium leading-relaxed">
                 AI farming assistant for every Indian farmer. Crop advice, weather, mandi prices, and schemes in your language.
               </p>
             </div>
             <div>
-              <h4 className="font-bold text-white mb-3 text-sm uppercase tracking-wide">Product</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <h4 className="font-extrabold text-white mb-3 text-sm uppercase tracking-wide">Product</h4>
+              <ul className="space-y-2 text-sm text-[#AFAFAF] font-medium">
                 <li><Link href="/application" className="hover:text-white transition-colors">Try KisanAI</Link></li>
                 <li><Link href="/impact" className="hover:text-white transition-colors">Impact</Link></li>
                 <li><Link href="/research" className="hover:text-white transition-colors">Research</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold text-white mb-3 text-sm uppercase tracking-wide">Organisations</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <h4 className="font-extrabold text-white mb-3 text-sm uppercase tracking-wide">Organisations</h4>
+              <ul className="space-y-2 text-sm text-[#AFAFAF] font-medium">
                 <li><Link href="/government" className="hover:text-white transition-colors">Government</Link></li>
                 <li><Link href="/investors" className="hover:text-white transition-colors">Investors</Link></li>
                 <li><Link href="/partners" className="hover:text-white transition-colors">Partners</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold text-white mb-3 text-sm uppercase tracking-wide">Legal</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <h4 className="font-extrabold text-white mb-3 text-sm uppercase tracking-wide">Legal</h4>
+              <ul className="space-y-2 text-sm text-[#AFAFAF] font-medium">
                 <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
                 <li><Link href="/terms" className="hover:text-white transition-colors">Terms of Use</Link></li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-gray-400">&copy; {new Date().getFullYear()} KisanAI. All rights reserved.</p>
-            <p className="text-xs text-gray-500">KisanAI provides decision support, not regulated agricultural, financial, or legal advice.</p>
+          <div className="border-t-2 border-[#777777] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-sm text-[#AFAFAF] font-medium">&copy; {new Date().getFullYear()} KisanAI. All rights reserved.</p>
+            <p className="text-xs text-[#AFAFAF] font-medium">KisanAI provides decision support, not regulated agricultural, financial, or legal advice.</p>
           </div>
         </div>
       </footer>
