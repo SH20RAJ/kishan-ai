@@ -8,42 +8,10 @@ export const metadata: Metadata = {
 };
 
 const problems = [
-  {
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
-      </svg>
-    ),
-    title: "Information Asymmetry",
-    desc: "Farmers lack timely access to weather, mandi prices, and scheme information. Extension workers are stretched thin -- India has roughly 1 extension worker per 1,000 farmers.",
-  },
-  {
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 0 1 6-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 0 1-3.827-5.802" />
-      </svg>
-    ),
-    title: "Language Gaps",
-    desc: "Scheme documents and advisories are published in English or Hindi. Farmers speaking regional languages cannot access benefits they are eligible for.",
-  },
-  {
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-      </svg>
-    ),
-    title: "Low Scheme Uptake",
-    desc: "PMFBY, PM-KISAN, and KCC have significant unclaimed benefits. Farmers do not know they qualify or cannot navigate the application process.",
-  },
-  {
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-      </svg>
-    ),
-    title: "No Measurable Impact",
-    desc: "Current extension channels lack feedback loops. It is difficult to measure whether advisory content reaches farmers or changes behaviour.",
-  },
+  { emoji: "⚠️", title: "Information Asymmetry", desc: "Farmers lack timely access to weather, mandi prices, and scheme information. Extension workers are stretched thin -- India has roughly 1 extension worker per 1,000 farmers." },
+  { emoji: "🌐", title: "Language Gaps", desc: "Scheme documents and advisories are published in English or Hindi. Farmers speaking regional languages cannot access benefits they are eligible for." },
+  { emoji: "📋", title: "Low Scheme Uptake", desc: "PMFBY, PM-KISAN, and KCC have significant unclaimed benefits. Farmers do not know they qualify or cannot navigate the application process." },
+  { emoji: "📊", title: "No Measurable Impact", desc: "Current extension channels lack feedback loops. It is difficult to measure whether advisory content reaches farmers or changes behaviour." },
 ];
 
 const solutions = [
@@ -54,33 +22,9 @@ const solutions = [
 ];
 
 const deploymentModels = [
-  {
-    title: "FPO Integration",
-    desc: "Deploy KisanAI through existing FPO networks. The FPO admin gets a dashboard; farmers get the assistant via WhatsApp or web.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
-      </svg>
-    ),
-  },
-  {
-    title: "KVK Channel",
-    desc: "KVK scientists use KisanAI as a force multiplier. Pre-configured with region-specific crop calendars and local advisory content.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
-      </svg>
-    ),
-  },
-  {
-    title: "NGO Partnership",
-    desc: "NGOs with existing farmer networks onboard KisanAI as part of their extension programme. Co-branded, co-measured.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
-      </svg>
-    ),
-  },
+  { title: "FPO Integration", desc: "Deploy KisanAI through existing FPO networks. The FPO admin gets a dashboard; farmers get the assistant via WhatsApp or web.", emoji: "👥" },
+  { title: "KVK Channel", desc: "KVK scientists use KisanAI as a force multiplier. Pre-configured with region-specific crop calendars and local advisory content.", emoji: "🎓" },
+  { title: "NGO Partnership", desc: "NGOs with existing farmer networks onboard KisanAI as part of their extension programme. Co-branded, co-measured.", emoji: "💚" },
 ];
 
 const safetyPoints = [
@@ -100,191 +44,158 @@ const pilotSteps = [
 ];
 
 const metrics = [
-  { label: "Queries Answered", desc: "Total farmer questions handled by the assistant" },
-  { label: "Source Attribution Rate", desc: "Percentage of answers with verifiable source links" },
-  { label: "Scheme Lookups", desc: "Number of government scheme eligibility checks performed" },
-  { label: "Disease Scans", desc: "Crop disease photos analysed with diagnosis provided" },
-  { label: "Farmer Retention", desc: "Percentage of farmers returning after first use" },
-  { label: "Response Satisfaction", desc: "Helpful vs not-helpful feedback ratio" },
-  { label: "Language Distribution", desc: "Queries broken down by language used" },
-  { label: "Topic Heatmap", desc: "Most-asked questions by crop, region, and season" },
+  { label: "Queries Answered", desc: "Total farmer questions handled by the assistant", emoji: "💬" },
+  { label: "Source Attribution Rate", desc: "Percentage of answers with verifiable source links", emoji: "🔗" },
+  { label: "Scheme Lookups", desc: "Number of government scheme eligibility checks performed", emoji: "📋" },
+  { label: "Disease Scans", desc: "Crop disease photos analysed with diagnosis provided", emoji: "🔬" },
+  { label: "Farmer Retention", desc: "Percentage of farmers returning after first use", emoji: "🔄" },
+  { label: "Response Satisfaction", desc: "Helpful vs not-helpful feedback ratio", emoji: "👍" },
+  { label: "Language Distribution", desc: "Queries broken down by language used", emoji: "🌐" },
+  { label: "Topic Heatmap", desc: "Most-asked questions by crop, region, and season", emoji: "🔥" },
 ];
 
 export default function GovernmentPage() {
   return (
     <>
-      <nav className="sticky top-0 z-50 bg-surface/95 backdrop-blur-sm border-b-2 border-border/80">
+      <nav className="sticky top-0 z-50 bg-white border-b-2 border-[#E5E5E5]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="text-xl font-extrabold text-white flex items-center gap-2 tracking-tight">
-            <div className="w-8 h-8 rounded-lg overflow-hidden bg-white flex items-center justify-center border border-white/20">
-              <img src="/logo.png" alt="KisanAI Logo" className="w-7 h-7 object-contain" />
-            </div>
-            <span className="text-foreground">KisanAI</span>
-          </Link>
+          <Link href="/" className="text-xl font-extrabold text-[#4B4B4B] flex items-center gap-2">🦜 KisanAI</Link>
           <div className="hidden md:flex items-center gap-6 text-sm font-bold">
-            <Link href="/government" className="text-primary border-b-2 border-primary pb-0.5">Government</Link>
-            <Link href="/investors" className="text-muted hover:text-primary transition-colors">Investors</Link>
-            <Link href="/partners" className="text-muted hover:text-primary transition-colors">Partners</Link>
-            <Link href="/research" className="text-muted hover:text-primary transition-colors">Research</Link>
-            <Link href="/impact" className="text-muted hover:text-primary transition-colors">Impact</Link>
-            <Link 
-              href="/application" 
-              className="btn-3d-primary px-4 py-2 text-xs shadow-[0_3px_0_var(--primary-dark)]"
-            >
-              Try KisanAI
-            </Link>
+            <Link href="/government" className="text-[#58CC02]">Government</Link>
+            <Link href="/investors" className="text-[#777777] hover:text-[#4B4B4B]">Investors</Link>
+            <Link href="/partners" className="text-[#777777] hover:text-[#4B4B4B]">Partners</Link>
+            <Link href="/research" className="text-[#777777] hover:text-[#4B4B4B]">Research</Link>
+            <Link href="/impact" className="text-[#777777] hover:text-[#4B4B4B]">Impact</Link>
+            <Link href="/application" className="inline-flex items-center justify-center px-5 py-2.5 bg-[#58CC02] text-white font-extrabold rounded-2xl text-sm shadow-[0_4px_0_#46A302] hover:brightness-105 active:translate-y-[4px] active:shadow-none transition-all">Try KisanAI</Link>
           </div>
-          <div className="md:hidden">
-            <Link href="/" className="text-primary font-bold text-sm">Home</Link>
-          </div>
+          <div className="md:hidden"><Link href="/" className="text-[#58CC02] font-extrabold text-sm">Home</Link></div>
         </div>
       </nav>
 
       <main>
-        {/* Hero */}
-        <section className="bg-gradient-to-b from-primary-dark to-primary text-white py-20 sm:py-28 border-b-4 border-primary-dark">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-            <p className="text-amber-300 font-bold text-sm tracking-wide uppercase mb-4">For Government & Public Institutions</p>
-            <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight text-white tracking-tight">
-              AI-powered farming advisory at population scale
-            </h1>
-            <p className="mt-6 text-lg sm:text-xl text-green-100 leading-relaxed max-w-2xl mx-auto">
-              Deliver multilingual, source-attributed crop advisory through FPOs, KVKs, and NGO networks. Structured pilots with measurable outcomes.
-            </p>
+        <section className="bg-[#58CC02] text-white py-20 sm:py-28 relative overflow-hidden">
+          <div className="absolute top-8 right-8 text-[120px] opacity-10 select-none pointer-events-none">🦜</div>
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
+            <p className="text-white/80 font-extrabold text-sm tracking-wide uppercase mb-4">For Government & Public Institutions</p>
+            <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight text-white">🌾 AI-powered farming advisory at population scale</h1>
+            <p className="mt-6 text-lg sm:text-xl text-white/90 leading-relaxed max-w-2xl mx-auto">Deliver multilingual, source-attributed crop advisory through FPOs, KVKs, and NGO networks. Structured pilots with measurable outcomes.</p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="#pilot" className="btn-3d-saffron px-8 py-4 text-lg text-amber-950 font-extrabold shadow-[0_5px_0_#9a3412]">
-                Start a 90-Day Pilot
-              </a>
-              <a href="#contact" className="btn-3d-white px-8 py-4 text-lg shadow-[0_5px_0_var(--border-color)]">
-                Contact Us
-              </a>
+              <a href="#pilot" className="inline-flex items-center justify-center px-8 py-4 bg-white text-[#4B4B4B] font-extrabold rounded-2xl text-lg shadow-[0_5px_0_#E5E5E5] hover:brightness-105 active:translate-y-[5px] active:shadow-none transition-all">🚀 Start a 90-Day Pilot</a>
+              <a href="#contact" className="inline-flex items-center justify-center px-8 py-4 bg-[#FFC800] text-[#4B4B4B] font-extrabold rounded-2xl text-lg shadow-[0_5px_0_#E6B400] hover:brightness-105 active:translate-y-[5px] active:shadow-none transition-all">📞 Contact Us</a>
             </div>
           </div>
         </section>
 
-        {/* Problem */}
-        <section className="py-20 sm:py-28 bg-surface-raised">
+        <section className="py-20 sm:py-28 bg-[#F7F7F7]">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="text-center max-w-2xl mx-auto mb-16">
-              <p className="text-secondary font-semibold text-sm tracking-wide uppercase mb-3">The Problem</p>
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground">Extension services are overstretched</h2>
-              <p className="mt-4 text-lg text-muted">India has approximately 1 extension worker per 1,000 farmers. Critical information does not reach those who need it most.</p>
+              <p className="text-[#58CC02] font-extrabold text-sm tracking-wide uppercase mb-3">The Problem</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#4B4B4B]">Extension services are overstretched</h2>
+              <p className="mt-4 text-lg text-[#777777]">India has approximately 1 extension worker per 1,000 farmers. Critical information does not reach those who need it most.</p>
             </div>
             <div className="grid sm:grid-cols-2 gap-6">
               {problems.map((p, i) => (
-                <article key={i} className="bg-surface rounded-2xl p-6 border border-border">
-                  <div className="w-14 h-14 rounded-xl bg-red-50 text-error flex items-center justify-center mb-4">{p.icon}</div>
-                  <h3 className="text-lg font-bold text-foreground mb-2">{p.title}</h3>
-                  <p className="text-muted text-sm leading-relaxed">{p.desc}</p>
+                <article key={i} className="bg-white rounded-2xl p-6 border-2 border-[#E5E5E5] shadow-[0_2px_0_#E5E5E5]">
+                  <div className="text-4xl mb-4">{p.emoji}</div>
+                  <h3 className="text-lg font-extrabold text-[#4B4B4B] mb-2">{p.title}</h3>
+                  <p className="text-[#777777] text-sm leading-relaxed">{p.desc}</p>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Solution */}
         <section className="py-20 sm:py-28">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="text-center max-w-2xl mx-auto mb-16">
-              <p className="text-primary font-semibold text-sm tracking-wide uppercase mb-3">Our Solution</p>
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground">One assistant, four public-good capabilities</h2>
+              <p className="text-[#58CC02] font-extrabold text-sm tracking-wide uppercase mb-3">Our Solution</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#4B4B4B]">One assistant, four public-good capabilities</h2>
             </div>
             <div className="grid sm:grid-cols-2 gap-6">
               {solutions.map((s, i) => (
-                <article key={i} className="bg-surface rounded-2xl p-8 border border-border hover:border-primary/20 hover:shadow-lg transition-all">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5">
-                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-2">{s.title}</h3>
-                  <p className="text-muted leading-relaxed">{s.desc}</p>
+                <article key={i} className="bg-white rounded-2xl p-8 border-2 border-[#E5E5E5] shadow-[0_2px_0_#E5E5E5] hover:border-[#58CC02]/30 hover:shadow-lg transition-all">
+                  <div className="w-12 h-12 rounded-2xl bg-[#58CC02]/10 text-[#58CC02] flex items-center justify-center mb-5 text-2xl">✅</div>
+                  <h3 className="text-xl font-extrabold text-[#4B4B4B] mb-2">{s.title}</h3>
+                  <p className="text-[#777777] leading-relaxed">{s.desc}</p>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Public Impact */}
-        <section className="py-20 sm:py-28 bg-surface-raised">
+        <section className="py-20 sm:py-28 bg-[#F7F7F7]">
           <div className="max-w-4xl mx-auto px-4 sm:px-6">
             <div className="text-center mb-16">
-              <p className="text-secondary font-semibold text-sm tracking-wide uppercase mb-3">Public Impact</p>
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground">What structured advisory can achieve</h2>
-              <p className="mt-4 text-lg text-muted">These are outcomes we aim to measure during pilots. We do not claim results until we have data.</p>
+              <p className="text-[#58CC02] font-extrabold text-sm tracking-wide uppercase mb-3">Public Impact</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#4B4B4B]">What structured advisory can achieve</h2>
+              <p className="mt-4 text-lg text-[#777777]">These are outcomes we aim to measure during pilots. We do not claim results until we have data.</p>
             </div>
             <div className="grid sm:grid-cols-2 gap-6">
               {[
-                { title: "Scheme Awareness", desc: "Help eligible farmers discover schemes they do not know about. Track scheme lookup-to-application intent." },
-                { title: "Decision Speed", desc: "Reduce time from symptom observation to informed action. Measure query-to-answer latency and follow-up rates." },
-                { title: "Information Quality", desc: "Replace WhatsApp rumours with sourced, verifiable answers. Track source attribution rate across all responses." },
-                { title: "Extension Reach", desc: "Multiply the effective reach of each extension worker. Measure queries per FPO/KVK partner." },
+                { title: "Scheme Awareness", desc: "Help eligible farmers discover schemes they do not know about. Track scheme lookup-to-application intent.", emoji: "📋" },
+                { title: "Decision Speed", desc: "Reduce time from symptom observation to informed action. Measure query-to-answer latency and follow-up rates.", emoji: "⚡" },
+                { title: "Information Quality", desc: "Replace WhatsApp rumours with sourced, verifiable answers. Track source attribution rate across all responses.", emoji: "✅" },
+                { title: "Extension Reach", desc: "Multiply the effective reach of each extension worker. Measure queries per FPO/KVK partner.", emoji: "📡" },
               ].map((item, i) => (
-                <div key={i} className="bg-surface rounded-2xl p-6 border border-border">
-                  <h3 className="text-lg font-bold text-foreground mb-2">{item.title}</h3>
-                  <p className="text-muted text-sm leading-relaxed">{item.desc}</p>
+                <div key={i} className="bg-white rounded-2xl p-6 border-2 border-[#E5E5E5] shadow-[0_2px_0_#E5E5E5]">
+                  <div className="text-3xl mb-3">{item.emoji}</div>
+                  <h3 className="text-lg font-extrabold text-[#4B4B4B] mb-2">{item.title}</h3>
+                  <p className="text-[#777777] text-sm leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Deployment Model */}
         <section className="py-20 sm:py-28">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="text-center max-w-2xl mx-auto mb-16">
-              <p className="text-primary font-semibold text-sm tracking-wide uppercase mb-3">Deployment Model</p>
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground">Reach farmers through existing networks</h2>
+              <p className="text-[#58CC02] font-extrabold text-sm tracking-wide uppercase mb-3">Deployment Model</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#4B4B4B]">Reach farmers through existing networks</h2>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
               {deploymentModels.map((d, i) => (
-                <div key={i} className="text-center">
-                  <div className="w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mx-auto mb-5">{d.icon}</div>
-                  <h3 className="text-xl font-bold text-foreground mb-3">{d.title}</h3>
-                  <p className="text-muted leading-relaxed">{d.desc}</p>
+                <div key={i} className="text-center bg-white rounded-2xl p-8 border-2 border-[#E5E5E5] shadow-[0_2px_0_#E5E5E5]">
+                  <div className="text-5xl mb-5">{d.emoji}</div>
+                  <h3 className="text-xl font-extrabold text-[#4B4B4B] mb-3">{d.title}</h3>
+                  <p className="text-[#777777] leading-relaxed">{d.desc}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Safety */}
-        <section className="py-20 sm:py-28 bg-surface-raised">
+        <section className="py-20 sm:py-28 bg-[#F7F7F7]">
           <div className="max-w-4xl mx-auto px-4 sm:px-6">
             <div className="text-center mb-12">
-              <p className="text-secondary font-semibold text-sm tracking-wide uppercase mb-3">Safety & Trust</p>
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground">Designed for responsible deployment</h2>
+              <p className="text-[#58CC02] font-extrabold text-sm tracking-wide uppercase mb-3">Safety & Trust</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#4B4B4B]">Designed for responsible deployment</h2>
             </div>
             <ul className="space-y-4">
               {safetyPoints.map((point, i) => (
-                <li key={i} className="flex items-start gap-4 bg-surface rounded-xl p-5 border border-border">
-                  <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                    </svg>
-                  </div>
-                  <p className="text-foreground leading-relaxed">{point}</p>
+                <li key={i} className="flex items-start gap-4 bg-white rounded-2xl p-5 border-2 border-[#E5E5E5] shadow-[0_2px_0_#E5E5E5]">
+                  <div className="w-8 h-8 rounded-full bg-[#58CC02] text-white flex items-center justify-center flex-shrink-0 mt-0.5 text-sm font-extrabold">✓</div>
+                  <p className="text-[#4B4B4B] leading-relaxed">{point}</p>
                 </li>
               ))}
             </ul>
           </div>
         </section>
 
-        {/* 90-Day Pilot */}
         <section id="pilot" className="py-20 sm:py-28">
           <div className="max-w-4xl mx-auto px-4 sm:px-6">
             <div className="text-center mb-16">
-              <p className="text-primary font-semibold text-sm tracking-wide uppercase mb-3">Pilot Proposal</p>
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground">90-day structured pilot</h2>
-              <p className="mt-4 text-lg text-muted">A low-risk, measurable engagement designed to validate AI advisory in your farmer network.</p>
+              <p className="text-[#58CC02] font-extrabold text-sm tracking-wide uppercase mb-3">Pilot Proposal</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#4B4B4B]">🗓️ 90-day structured pilot</h2>
+              <p className="mt-4 text-lg text-[#777777]">A low-risk, measurable engagement designed to validate AI advisory in your farmer network.</p>
             </div>
             <div className="space-y-6">
               {pilotSteps.map((step, i) => (
-                <div key={i} className="flex items-start gap-6 bg-surface rounded-2xl p-6 border border-border">
-                  <div className="w-16 h-16 rounded-2xl bg-primary text-white flex items-center justify-center flex-shrink-0 text-sm font-bold text-center leading-tight">{step.week}</div>
+                <div key={i} className="flex items-start gap-6 bg-white rounded-2xl p-6 border-2 border-[#E5E5E5] shadow-[0_2px_0_#E5E5E5]">
+                  <div className="w-16 h-16 rounded-2xl bg-[#58CC02] text-white flex items-center justify-center flex-shrink-0 text-sm font-extrabold text-center leading-tight shadow-[0_4px_0_#46A302]">{step.week}</div>
                   <div>
-                    <h3 className="text-lg font-bold text-foreground mb-1">{step.title}</h3>
-                    <p className="text-muted leading-relaxed">{step.desc}</p>
+                    <h3 className="text-lg font-extrabold text-[#4B4B4B] mb-1">{step.title}</h3>
+                    <p className="text-[#777777] leading-relaxed">{step.desc}</p>
                   </div>
                 </div>
               ))}
@@ -292,24 +203,19 @@ export default function GovernmentPage() {
           </div>
         </section>
 
-        {/* Metrics We Track */}
-        <section className="py-20 sm:py-28 bg-surface-raised">
+        <section className="py-20 sm:py-28 bg-[#F7F7F7]">
           <div className="max-w-4xl mx-auto px-4 sm:px-6">
             <div className="text-center mb-12">
-              <p className="text-secondary font-semibold text-sm tracking-wide uppercase mb-3">Metrics We Track</p>
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground">Transparent, auditable reporting</h2>
+              <p className="text-[#58CC02] font-extrabold text-sm tracking-wide uppercase mb-3">Metrics We Track</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#4B4B4B]">📊 Transparent, auditable reporting</h2>
             </div>
             <div className="grid sm:grid-cols-2 gap-4">
               {metrics.map((m, i) => (
-                <div key={i} className="bg-surface rounded-xl p-5 border border-border flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-                    </svg>
-                  </div>
+                <div key={i} className="bg-white rounded-2xl p-5 border-2 border-[#E5E5E5] shadow-[0_2px_0_#E5E5E5] flex items-start gap-4">
+                  <div className="text-3xl flex-shrink-0">{m.emoji}</div>
                   <div>
-                    <h4 className="font-bold text-foreground">{m.label}</h4>
-                    <p className="text-sm text-muted">{m.desc}</p>
+                    <h4 className="font-extrabold text-[#4B4B4B]">{m.label}</h4>
+                    <p className="text-sm text-[#777777]">{m.desc}</p>
                   </div>
                 </div>
               ))}
@@ -317,87 +223,39 @@ export default function GovernmentPage() {
           </div>
         </section>
 
-        {/* Contact Form */}
-        <section id="contact" className="py-20 sm:py-28 bg-gradient-to-br from-earth to-earth-light text-white">
+        <section id="contact" className="py-20 sm:py-28 bg-[#4B4B4B] text-white">
           <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white">Start a conversation</h2>
-            <p className="mt-4 text-lg text-amber-100 leading-relaxed">Interested in a pilot for your FPO, KVK, NGO, or state department? Share your details and we will get back to you within 3 business days.</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white">📞 Start a conversation</h2>
+            <p className="mt-4 text-lg text-white/70 leading-relaxed">Interested in a pilot for your FPO, KVK, NGO, or state department? Share your details and we will get back to you within 3 business days.</p>
             <form className="mt-10 space-y-4 text-left" action="/api/partner-lead" method="POST">
               <input type="hidden" name="type" value="government" />
               <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="contactName" className="block text-sm font-medium text-amber-100 mb-1">Contact Name</label>
-                  <input type="text" id="contactName" name="contactName" required className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-green-200 focus:outline-none focus:ring-2 focus:ring-white/40" placeholder="Your name" />
-                </div>
-                <div>
-                  <label htmlFor="organizationName" className="block text-sm font-medium text-amber-100 mb-1">Organisation</label>
-                  <input type="text" id="organizationName" name="organizationName" required className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-green-200 focus:outline-none focus:ring-2 focus:ring-white/40" placeholder="FPO / KVK / NGO / Dept" />
-                </div>
+                <div><label htmlFor="contactName" className="block text-xs font-extrabold text-white/70 uppercase tracking-wider mb-2">Contact Name</label><input type="text" id="contactName" name="contactName" required className="w-full px-4 py-3.5 rounded-2xl bg-white/10 border-2 border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:border-[#1CB0F6] focus:ring-2 focus:ring-[#1CB0F6]/20 transition-all" placeholder="Your name" /></div>
+                <div><label htmlFor="organizationName" className="block text-xs font-extrabold text-white/70 uppercase tracking-wider mb-2">Organisation</label><input type="text" id="organizationName" name="organizationName" required className="w-full px-4 py-3.5 rounded-2xl bg-white/10 border-2 border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:border-[#1CB0F6] focus:ring-2 focus:ring-[#1CB0F6]/20 transition-all" placeholder="FPO / KVK / NGO / Dept" /></div>
               </div>
               <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-amber-100 mb-1">Email</label>
-                  <input type="email" id="email" name="email" required className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-green-200 focus:outline-none focus:ring-2 focus:ring-white/40" placeholder="you@example.com" />
-                </div>
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-amber-100 mb-1">Phone</label>
-                  <input type="tel" id="phone" name="phone" className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-green-200 focus:outline-none focus:ring-2 focus:ring-white/40" placeholder="+91 ..." />
-                </div>
+                <div><label htmlFor="email" className="block text-xs font-extrabold text-white/70 uppercase tracking-wider mb-2">Email</label><input type="email" id="email" name="email" required className="w-full px-4 py-3.5 rounded-2xl bg-white/10 border-2 border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:border-[#1CB0F6] focus:ring-2 focus:ring-[#1CB0F6]/20 transition-all" placeholder="you@example.com" /></div>
+                <div><label htmlFor="phone" className="block text-xs font-extrabold text-white/70 uppercase tracking-wider mb-2">Phone</label><input type="tel" id="phone" name="phone" className="w-full px-4 py-3.5 rounded-2xl bg-white/10 border-2 border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:border-[#1CB0F6] focus:ring-2 focus:ring-[#1CB0F6]/20 transition-all" placeholder="+91 ..." /></div>
               </div>
-              <div>
-                <label htmlFor="state" className="block text-sm font-medium text-amber-100 mb-1">State</label>
-                <input type="text" id="state" name="state" className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-green-200 focus:outline-none focus:ring-2 focus:ring-white/40" placeholder="e.g. Maharashtra" />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-amber-100 mb-1">Message</label>
-                <textarea id="message" name="message" rows={4} className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-green-200 focus:outline-none focus:ring-2 focus:ring-white/40 resize-none" placeholder="Tell us about your farmer network and what you are looking for..." />
-              </div>
-              <button type="submit" className="w-full sm:w-auto btn-3d-saffron text-amber-950 font-extrabold shadow-[0_5px_0_#9a3412] px-8 py-4 text-lg">Submit Enquiry</button>
+              <div><label htmlFor="state" className="block text-xs font-extrabold text-white/70 uppercase tracking-wider mb-2">State</label><input type="text" id="state" name="state" className="w-full px-4 py-3.5 rounded-2xl bg-white/10 border-2 border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:border-[#1CB0F6] focus:ring-2 focus:ring-[#1CB0F6]/20 transition-all" placeholder="e.g. Maharashtra" /></div>
+              <div><label htmlFor="message" className="block text-xs font-extrabold text-white/70 uppercase tracking-wider mb-2">Message</label><textarea id="message" name="message" rows={4} className="w-full px-4 py-3.5 rounded-2xl bg-white/10 border-2 border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:border-[#1CB0F6] focus:ring-2 focus:ring-[#1CB0F6]/20 transition-all resize-none" placeholder="Tell us about your farmer network and what you are looking for..." /></div>
+              <button type="submit" className="w-full sm:w-auto px-8 py-4 bg-[#FFC800] text-[#4B4B4B] font-extrabold rounded-2xl text-lg shadow-[0_5px_0_#E6B400] hover:brightness-105 active:translate-y-[5px] active:shadow-none transition-all cursor-pointer">Submit Enquiry</button>
             </form>
           </div>
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-foreground text-white py-12">
+      <footer className="bg-[#4B4B4B] text-white py-16 border-t border-white/10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-            <div>
-              <Link href="/" className="text-lg font-extrabold text-white flex items-center gap-2 mb-4 tracking-tight">
-                <div className="w-8 h-8 rounded-lg overflow-hidden bg-white flex items-center justify-center border border-white/20">
-                  <img src="/logo.png" alt="KisanAI Logo" className="w-7 h-7 object-contain" />
-                </div>
-                <span>KisanAI</span>
-              </Link>
-              <p className="text-gray-400 text-sm leading-relaxed">AI farming assistant for every Indian farmer.</p>
-            </div>
-            <div>
-              <h4 className="font-semibold text-white mb-3">Product</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li><Link href="/application" className="hover:text-white transition-colors">Try KisanAI</Link></li>
-                <li><Link href="/impact" className="hover:text-white transition-colors">Impact</Link></li>
-                <li><Link href="/research" className="hover:text-white transition-colors">Research</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-white mb-3">Organisations</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li><Link href="/government" className="hover:text-white transition-colors">Government</Link></li>
-                <li><Link href="/investors" className="hover:text-white transition-colors">Investors</Link></li>
-                <li><Link href="/partners" className="hover:text-white transition-colors">Partners</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-white mb-3">Legal</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
-                <li><Link href="/terms" className="hover:text-white transition-colors">Terms of Use</Link></li>
-              </ul>
-            </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <div><Link href="/" className="text-xl font-extrabold text-white flex items-center gap-2 mb-4">🦜 KisanAI</Link><p className="text-white/60 text-sm leading-relaxed">AI farming assistant for every Indian farmer.</p></div>
+            <div><h4 className="font-extrabold text-white mb-3 text-sm uppercase tracking-wide">Product</h4><ul className="space-y-2 text-sm text-white/60"><li><Link href="/application" className="hover:text-white transition-colors">Try KisanAI</Link></li><li><Link href="/impact" className="hover:text-white transition-colors">Impact</Link></li><li><Link href="/research" className="hover:text-white transition-colors">Research</Link></li></ul></div>
+            <div><h4 className="font-extrabold text-white mb-3 text-sm uppercase tracking-wide">Organisations</h4><ul className="space-y-2 text-sm text-white/60"><li><Link href="/government" className="hover:text-white transition-colors">Government</Link></li><li><Link href="/investors" className="hover:text-white transition-colors">Investors</Link></li><li><Link href="/partners" className="hover:text-white transition-colors">Partners</Link></li></ul></div>
+            <div><h4 className="font-extrabold text-white mb-3 text-sm uppercase tracking-wide">Legal</h4><ul className="space-y-2 text-sm text-white/60"><li><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li><li><Link href="/terms" className="hover:text-white transition-colors">Terms of Use</Link></li></ul></div>
           </div>
-          <div className="border-t border-gray-700 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-gray-400">&copy; {new Date().getFullYear()} KisanAI. All rights reserved.</p>
-            <p className="text-xs text-gray-500">KisanAI provides decision support, not regulated agricultural, financial, or legal advice.</p>
+          <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-sm text-white/60">&copy; {new Date().getFullYear()} KisanAI. All rights reserved.</p>
+            <p className="text-xs text-white/40">KisanAI provides decision support, not regulated agricultural, financial, or legal advice.</p>
           </div>
         </div>
       </footer>
