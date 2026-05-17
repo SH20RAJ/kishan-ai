@@ -34,9 +34,13 @@ export interface AIProvider {
 class OpenAIProvider implements AIProvider {
   readonly name: ProviderName = 'openai';
   private apiKey: string;
+  private baseUrl: string;
+  private model: string;
 
-  constructor(apiKey: string) {
+  constructor(apiKey: string, baseUrl?: string, model?: string) {
     this.apiKey = apiKey;
+    this.baseUrl = baseUrl || 'https://api.openai.com/v1';
+    this.model = model || 'gpt-4o-mini';
   }
 
   get isAvailable(): boolean {
@@ -44,14 +48,14 @@ class OpenAIProvider implements AIProvider {
   }
 
   async generate(options: GenerateOptions): Promise<string> {
-    const res = await fetch('https://api.openai.com/v1/chat/completions', {
+    const res = await fetch(`${this.baseUrl}/chat/completions`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${this.apiKey}`,
       },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
+        model: this.model,
         temperature: options.temperature ?? 0.4,
         max_tokens: options.maxTokens ?? 1024,
         messages: [
@@ -63,7 +67,8 @@ class OpenAIProvider implements AIProvider {
     });
 
     if (!res.ok) {
-      throw new Error(`OpenAI API error: ${res.status} ${res.statusText}`);
+      const errBody = await res.text().catch(() => '');
+      throw new Error(`OpenAI API error: ${res.status} ${res.statusText} - ${errBody.slice(0, 200)}`);
     }
 
     const data = (await res.json()) as { choices?: { message?: { content?: string } }[] };
@@ -71,14 +76,14 @@ class OpenAIProvider implements AIProvider {
   }
 
   async *generateStream(options: GenerateOptions): AsyncIterable<StreamChunk> {
-    const res = await fetch('https://api.openai.com/v1/chat/completions', {
+    const res = await fetch(`${this.baseUrl}/chat/completions`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${this.apiKey}`,
       },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
+        model: this.model,
         temperature: options.temperature ?? 0.4,
         max_tokens: options.maxTokens ?? 1024,
         stream: true,
@@ -434,10 +439,12 @@ function detectProviders(): AIProvider[] {
   const providers: AIProvider[] = [];
 
   const openaiKey = process.env.OPENAI_API_KEY ?? '';
+  const openaiBase = process.env.OPENAI_BASE_URL ?? '';
+  const openaiModel = process.env.OPENAI_MODEL ?? '';
   const geminiKey = process.env.GEMINI_API_KEY ?? '';
   const anthropicKey = process.env.ANTHROPIC_API_KEY ?? '';
 
-  if (openaiKey) providers.push(new OpenAIProvider(openaiKey));
+  if (openaiKey) providers.push(new OpenAIProvider(openaiKey, openaiBase || undefined, openaiModel || undefined));
   if (geminiKey) providers.push(new GeminiProvider(geminiKey));
   if (anthropicKey) providers.push(new AnthropicProvider(anthropicKey));
 
