@@ -1,47 +1,46 @@
-# OpenNext Starter
+# KisanAI
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+AI farming assistant for every Indian farmer. Crop advice, weather alerts, mandi prices, and government schemes in your language.
+
+## Features
+
+- **Chat Assistant** — Ask any farming question in your language
+- **Disease Detection** — Upload crop photos for AI-assisted diagnosis
+- **Weather Advisory** — Hyper-local weather with farming recommendations
+- **Mandi Prices** — Current market prices from nearby mandis
+- **Government Schemes** — Eligibility checker with plain-language explanations
 
 ## Getting Started
 
-Read the documentation at https://opennext.js.org/cloudflare.
-
-## Develop
-
-Run the Next.js development server:
-
 ```bash
+npm install
 npm run dev
-# or similar package manager command
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment Variables
 
-## Preview
+See [ENVIRONMENT.md](./ENVIRONMENT.md) for configuration.
 
-Preview the application locally on the Cloudflare runtime:
+The app runs in **mock mode** without API keys — all features work with demo data.
 
-```bash
-npm run preview
-# or similar package manager command
-```
+## Deployment
 
-## Deploy
-
-Deploy the application to Cloudflare:
+Deploys to Cloudflare Workers via @opennextjs/cloudflare:
 
 ```bash
 npm run deploy
-# or similar package manager command
 ```
 
-## Learn More
+## Documentation
 
-To learn more about Next.js, take a look at the following resources:
+- [PITCH.md](./PITCH.md) — Pitch documents for government, investors, partners
+- [ARCHITECTURE.md](./ARCHITECTURE.md) — Technical architecture
+- [DESIGN.md](./DESIGN.md) — Design system
+- [ROADMAP.md](./ROADMAP.md) — Product roadmap
+- [.specs/kishanai/](./.specs/kishanai/) — Detailed specifications
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Proprietary
