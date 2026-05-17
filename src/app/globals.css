@@ -61,16 +61,9 @@
 }
 
 @layer base {
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
-    font-size: 16px;
   }
 
   body {
@@ -87,7 +80,7 @@
   /* Focus styles for accessibility */
   :focus-visible {
     outline: 3px solid var(--primary);
-    outline-offset: 3px;
+    outline-offset: 2px;
     border-radius: 4px;
   }
 
@@ -117,7 +110,8 @@
     background: var(--muted);
   }
 
-  /* Base typography - large for readability */
+  /* Base heading styles — only set weight and line-height, not size
+     (let Tailwind utilities like text-3xl, text-4xl, text-5xl control size) */
   h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
     font-weight: 700;
@@ -125,20 +119,9 @@
     letter-spacing: -0.01em;
   }
 
-  h1 { font-size: var(--text-3xl); }
-  h2 { font-size: var(--text-2xl); }
-  h3 { font-size: var(--text-xl); }
-  h4 { font-size: var(--text-lg); }
-
-  p {
-    font-size: var(--text-base);
-    line-height: 1.65;
-  }
-
   a {
     color: var(--primary);
     text-decoration: none;
-    transition: color 0.2s ease;
     font-weight: 500;
   }
   a:hover {
@@ -151,44 +134,138 @@
     display: block;
   }
 
-  button {
-    cursor: pointer;
-    font: inherit;
-    min-height: 48px;
-    min-width: 48px;
-  }
-
-  input, textarea, select {
-    font: inherit;
-    font-size: var(--text-base);
-    min-height: 48px;
-  }
-
-  /* Smooth transitions */
-  *, *::before, *::after {
-    transition-property: color, background-color, border-color, box-shadow, opacity, transform;
-    transition-duration: 0.2s;
+  /* Smooth transitions only on interactive elements */
+  a, button, input, select, textarea {
+    transition-property: color, background-color, border-color, box-shadow, opacity;
+    transition-duration: 0.15s;
     transition-timing-function: ease;
   }
+}
 
-  /* High-contrast utility for outdoor readability */
-  @media (prefers-contrast: high) {
-    :root {
-      --foreground: #000000;
-      --background: #ffffff;
-      --primary: #14532d;
-      --muted: #44403c;
-      --border-color: #44403c;
-    }
-  }
-
-  /* Reduced motion */
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
+/* High-contrast utility for outdoor readability */
+@media (prefers-contrast: high) {
+  :root {
+    --foreground: #000000;
+    --background: #ffffff;
+    --primary: #14532d;
+    --muted: #44403c;
+    --border-color: #44403c;
   }
 }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom Playful 3D Buttons (Duolingo Style) */
+.btn-3d-saffron {
+  background-color: var(--saffron);
+  color: #ffffff !important;
+  border-bottom: 5px solid #9a3412; /* Dark saffron shadow */
+  border-radius: 16px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
+  transition: transform 0.1s ease, border-bottom-width 0.1s ease, background-color 0.2s ease;
+}
+.btn-3d-saffron:hover {
+  background-color: #f97316; /* Lighter orange */
+  transform: translateY(-1px);
+  border-bottom-width: 6px;
+}
+.btn-3d-saffron:active {
+  transform: translateY(5px);
+  border-bottom-width: 0px;
+}
+
+.btn-3d-white {
+  background-color: #ffffff;
+  color: var(--primary) !important;
+  border: 2px solid var(--border-color);
+  border-bottom: 5px solid var(--border-color);
+  border-radius: 16px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  transform: translateY(0);
+  transition: transform 0.1s ease, border-bottom-width 0.1s ease, background-color 0.2s ease;
+}
+.btn-3d-white:hover {
+  background-color: var(--surface-raised);
+  transform: translateY(-1px);
+  border-bottom-width: 6px;
+}
+.btn-3d-white:active {
+  transform: translateY(5px);
+  border-bottom-width: 0px;
+}
+
+.btn-3d-primary {
+  background-color: var(--primary);
+  color: #ffffff !important;
+  border-bottom: 5px solid var(--primary-dark);
+  border-radius: 12px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(0);
+  transition: transform 0.1s ease, border-bottom-width 0.1s ease, background-color 0.2s ease;
+}
+.btn-3d-primary:hover {
+  background-color: var(--primary-light);
+  border-bottom-color: var(--primary);
+  transform: translateY(-1px);
+  border-bottom-width: 6px;
+}
+.btn-3d-primary:active {
+  transform: translateY(5px);
+  border-bottom-width: 0px;
+}
+
+/* Duolingo tactile progress/timeline step */
+.stepper-dashed-path {
+  position: relative;
+}
+.stepper-dashed-path::after {
+  content: '';
+  position: absolute;
+  top: 32px;
+  left: 50%;
+  width: 4px;
+  height: calc(100% - 64px);
+  border-left: 4px dashed var(--border-color);
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+@media (max-width: 768px) {
+  .stepper-dashed-path::after {
+    left: 32px;
+    top: 48px;
+    height: calc(100% - 96px);
+  }
+}
+
+/* Floating animation for mockups */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+
