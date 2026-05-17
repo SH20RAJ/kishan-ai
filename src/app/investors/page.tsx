@@ -85,6 +85,14 @@ export default function InvestorsPage() {
             <p className="text-white/80 font-extrabold text-sm tracking-wide uppercase mb-4">Investor Brief</p>
             <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight text-white">🌾 AI farming assistant for every Indian farmer</h1>
             <p className="mt-6 text-lg sm:text-xl text-white/90 leading-relaxed max-w-3xl">India has 9.7 crore digitally traceable farmers. Rural internet penetration exceeds 41%. No farmer-first, vernacular AI assistant has achieved meaningful scale. We are building the lowest-friction, highest-trust wrapper around existing agricultural information channels.</p>
+            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+              <a href="/KisanAI_Investor_Pitch.pdf" download="KisanAI_Investor_Pitch.pdf" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#58CC02] font-extrabold rounded-2xl text-lg shadow-[0_5px_0_#E5E5E5] hover:brightness-105 active:translate-y-[5px] active:shadow-none transition-all">
+                📄 Download Pitch Deck
+              </a>
+              <a href="#contact" className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/30 text-white font-extrabold rounded-2xl text-lg hover:bg-white/10 active:translate-y-[2px] transition-all">
+                📞 Get in Touch
+              </a>
+            </div>
           </div>
         </section>
 
@@ -252,10 +260,13 @@ export default function InvestorsPage() {
           </div>
         </section>
 
-        <section className="py-20 sm:py-28 bg-[#4B4B4B] text-white">
+        <section id="contact" className="py-20 sm:py-28 bg-[#4B4B4B] text-white">
           <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white">📞 Let&apos;s talk</h2>
             <p className="mt-4 text-lg text-white/70 leading-relaxed">Interested in KisanAI? We are happy to share our detailed deck, financial model, and technical architecture.</p>
+            <a href="/KisanAI_Investor_Pitch.pdf" download="KisanAI_Investor_Pitch.pdf" className="mt-6 inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#58CC02] text-white font-extrabold rounded-2xl text-lg shadow-[0_5px_0_#46A302] hover:brightness-105 active:translate-y-[5px] active:shadow-none transition-all">
+              📄 Download Pitch Deck
+            </a>
             <form className="mt-10 space-y-4 text-left" action="/api/partner-lead" method="POST">
               <input type="hidden" name="type" value="investor" />
               <div className="grid sm:grid-cols-2 gap-4">
