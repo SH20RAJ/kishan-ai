@@ -26,49 +26,45 @@ export default function DiseaseDetectionPage() {
     setLoading(true);
     try {
       const res = await fetch('/api/disease-detect', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ crop, symptoms, image: imagePreview }),
       });
-      const json = await res.json() as { data: DiseaseResult };
-      setResult(json.data);
+      const data = await res.json();
+      setResult(data.data);
     } catch {
-      setResult({
-        possibleIssue: 'Analysis failed',
-        confidence: 'low',
-        description: 'Could not analyze the image. Please try again.',
+      setResult({ possibleIssue: 'Analysis failed', confidence: 'low', description: 'Could not analyze. Please try again.',
         recommendedActions: ['Try uploading a clearer image', 'Consult your local KVK'],
-        caution: 'Unable to complete analysis. Please consult an expert.',
-        consultExpert: true,
-      });
-    } finally {
-      setLoading(false);
-    }
+        caution: 'Unable to complete analysis. Please consult an expert.', consultExpert: true });
+    } finally { setLoading(false); }
   };
 
   return (
-    <div className="px-4 py-6 pb-8">
-      <h1 className="text-xl font-bold text-[var(--foreground)] mb-1">Disease Detection</h1>
-      <p className="text-[var(--muted)] text-sm mb-6">Upload a photo of your crop to identify possible diseases</p>
+    <div className="px-4 py-6 pb-8 max-w-lg mx-auto">
+      {/* Header with Kino */}
+      <div className="flex items-center gap-3 mb-6">
+        <div className="w-12 h-12 rounded-2xl bg-gradient-to-b from-saffron to-accent flex items-center justify-center text-2xl shadow-[0_3px_0_#9a3412]">📸</div>
+        <div>
+          <h1 className="text-lg font-extrabold text-foreground">Disease Detection</h1>
+          <p className="text-xs text-muted">Upload a crop photo — Kino will help identify issues</p>
+        </div>
+      </div>
 
-      {/* Image Upload */}
-      <div className="mb-4">
+      {/* Image Upload — Tactile Card */}
+      <div className="mb-5">
         <label className="block">
-          <div className={`border-2 border-dashed rounded-xl p-6 text-center cursor-pointer transition-colors ${
-            imagePreview ? 'border-[var(--primary)] bg-[var(--primary)]/5' : 'border-[var(--border-color)] hover:border-[var(--primary)]'
+          <div className={`border-2 border-dashed rounded-3xl p-8 text-center cursor-pointer transition-all ${
+            imagePreview ? 'border-primary bg-primary/5 shadow-[0_4px_0_rgba(22,101,52,0.1)]' : 'border-border hover:border-primary active:translate-y-[2px]'
           }`}>
             {imagePreview ? (
               <div className="relative">
-                <img src={imagePreview} alt="Crop preview" className="max-h-48 mx-auto rounded-lg" />
-                <span className="text-sm text-[var(--primary)] mt-2 block">Click to change image</span>
+                <img src={imagePreview} alt="Crop preview" className="max-h-48 mx-auto rounded-2xl border-2 border-border" />
+                <span className="text-xs text-primary font-bold mt-3 block">Tap to change image</span>
               </div>
             ) : (
               <>
-                <svg className="w-10 h-10 mx-auto text-[var(--muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Z" />
-                </svg>
-                <p className="text-sm text-[var(--muted)] mt-2">Tap to upload a crop photo</p>
+                <div className="w-16 h-16 rounded-2xl bg-saffron/10 flex items-center justify-center mx-auto mb-3 text-3xl">📷</div>
+                <p className="text-sm font-bold text-foreground">Tap to upload a crop photo</p>
+                <p className="text-xs text-muted mt-1">Take a clear photo of affected leaves or stems</p>
               </>
             )}
           </div>
@@ -78,12 +74,9 @@ export default function DiseaseDetectionPage() {
 
       {/* Crop Selector */}
       <div className="mb-4">
-        <label className="block text-sm font-medium text-[var(--foreground)] mb-2">Select Crop</label>
-        <select
-          value={crop}
-          onChange={(e) => setCrop(e.target.value)}
-          className="w-full px-4 py-3 rounded-xl bg-[var(--surface)] border border-[var(--border-color)] text-[var(--foreground)] min-h-[48px]"
-        >
+        <label className="block text-sm font-extrabold text-foreground mb-2 uppercase tracking-wide">Select Crop</label>
+        <select value={crop} onChange={(e) => setCrop(e.target.value)}
+          className="w-full px-4 py-3.5 rounded-2xl bg-surface border-2 border-border text-foreground font-medium focus:border-primary focus:ring-2 focus:ring-primary/20">
           <option value="">Choose your crop...</option>
           {crops.map(c => <option key={c} value={c}>{c}</option>)}
         </select>
@@ -91,70 +84,56 @@ export default function DiseaseDetectionPage() {
 
       {/* Symptoms */}
       <div className="mb-6">
-        <label className="block text-sm font-medium text-[var(--foreground)] mb-2">Describe Symptoms (optional)</label>
-        <textarea
-          value={symptoms}
-          onChange={(e) => setSymptoms(e.target.value)}
-          placeholder="e.g., Yellow spots on leaves, brown edges, wilting..."
-          rows={3}
-          className="w-full px-4 py-3 rounded-xl bg-[var(--surface)] border border-[var(--border-color)] text-[var(--foreground)] placeholder:text-[var(--muted-light)] resize-none"
-        />
+        <label className="block text-sm font-extrabold text-foreground mb-2 uppercase tracking-wide">Symptoms (optional)</label>
+        <textarea value={symptoms} onChange={(e) => setSymptoms(e.target.value)}
+          placeholder="e.g., Yellow spots on leaves, brown edges, wilting..." rows={3}
+          className="w-full px-4 py-3.5 rounded-2xl bg-surface border-2 border-border text-foreground placeholder:text-muted-light resize-none focus:border-primary focus:ring-2 focus:ring-primary/20" />
       </div>
 
-      {/* Analyze Button */}
-      <button
-        onClick={analyze}
-        disabled={!crop || loading}
-        className="w-full py-4 rounded-xl bg-[var(--primary)] text-white font-bold text-lg min-h-[48px] disabled:opacity-50"
-      >
-        {loading ? 'Analyzing...' : 'Analyze Crop'}
+      {/* Analyze Button — 3D Saffron */}
+      <button onClick={analyze} disabled={!crop || loading}
+        className="btn-3d-saffron w-full py-4 text-lg shadow-[0_5px_0_#9a3412] disabled:opacity-50 disabled:shadow-none disabled:translate-y-[5px]">
+        {loading ? '🔄 Analyzing...' : '🔍 Analyze Crop'}
       </button>
 
-      {/* Demo Notice */}
-      <p className="text-xs text-[var(--muted)] text-center mt-3">
-        Demo mode - results are for illustration. Connect AI service for real analysis.
-      </p>
+      <p className="text-[10px] text-muted text-center mt-3 font-medium">Demo mode — connect AI service for real analysis</p>
 
-      {/* Result */}
+      {/* Result — Tactile Success/Error Card */}
       {result && (
-        <div className="mt-6 rounded-xl border border-[var(--border-color)] bg-[var(--surface)] overflow-hidden">
-          <div className="p-4 border-b border-[var(--border-color)]">
+        <div className="mt-6 rounded-3xl border-2 border-border bg-surface overflow-hidden shadow-[0_4px_0_rgba(0,0,0,0.05)]">
+          <div className="p-5 border-b-2 border-border">
             <div className="flex items-center justify-between mb-2">
-              <h3 className="font-bold text-[var(--foreground)]">{result.possibleIssue}</h3>
-              <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                result.confidence === 'high' ? 'bg-green-100 text-green-800' :
-                result.confidence === 'medium' ? 'bg-amber-100 text-amber-800' :
-                'bg-red-100 text-red-800'
+              <h3 className="font-extrabold text-foreground">{result.possibleIssue}</h3>
+              <span className={`px-3 py-1 rounded-full text-xs font-extrabold ${
+                result.confidence === 'high' ? 'bg-green-100 text-green-800 border border-green-200' :
+                result.confidence === 'medium' ? 'bg-amber-100 text-amber-800 border border-amber-200' :
+                'bg-red-100 text-red-800 border border-red-200'
               }`}>
                 {result.confidence} confidence
               </span>
             </div>
-            <p className="text-sm text-[var(--muted)]">{result.description}</p>
+            <p className="text-sm text-muted">{result.description}</p>
           </div>
 
-          <div className="p-4 border-b border-[var(--border-color)]">
-            <h4 className="font-semibold text-[var(--foreground)] text-sm mb-2">Recommended Actions</h4>
-            <ul className="space-y-2">
+          <div className="p-5 border-b-2 border-border">
+            <h4 className="font-extrabold text-foreground text-sm mb-3 uppercase tracking-wider">Action Checklist</h4>
+            <ul className="space-y-2.5">
               {result.recommendedActions.map((action, i) => (
-                <li key={i} className="flex items-start gap-2 text-sm text-[var(--foreground)]">
-                  <span className="w-5 h-5 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] flex items-center justify-center text-xs shrink-0 mt-0.5">{i + 1}</span>
-                  {action}
+                <li key={i} className="flex items-start gap-3 text-sm text-foreground">
+                  <span className="w-6 h-6 rounded-lg bg-primary/10 text-primary flex items-center justify-center text-xs font-extrabold shrink-0 border border-primary/20">✓</span>
+                  <span className="pt-0.5">{action}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="p-4 bg-amber-50 border-b border-amber-200">
-            <p className="text-sm text-amber-800">
-              <strong>Caution:</strong> {result.caution}
-            </p>
+          <div className="p-4 bg-amber-50 border-b-2 border-amber-200">
+            <p className="text-sm text-amber-800 font-medium">⚠️ {result.caution}</p>
           </div>
 
           {result.consultExpert && (
-            <div className="p-4 bg-[var(--primary)]/5">
-              <p className="text-sm text-[var(--primary)] font-medium">
-                Please consult your nearest KVK (Krishi Vigyan Kendra) or agriculture extension officer for confirmed diagnosis and treatment.
-              </p>
+            <div className="p-4 bg-primary/5">
+              <p className="text-sm text-primary font-bold">🏥 Please consult your nearest KVK or agriculture extension officer for confirmed diagnosis.</p>
             </div>
           )}
         </div>
