@@ -23,63 +23,60 @@ export default function WeatherPage() {
   const w = weather || mockWeatherData;
 
   return (
-    <div className="px-4 py-6 pb-8 max-w-lg mx-auto">
+    <div className="px-4 py-6 pb-8 max-w-lg mx-auto bg-white">
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-12 h-12 rounded-2xl bg-gradient-to-b from-info to-blue-700 flex items-center justify-center text-2xl shadow-[0_3px_0_#1e40af]">🌦️</div>
+        <div className="w-12 h-12 rounded-2xl bg-[#1CB0F6] flex items-center justify-center text-2xl shadow-[0_3px_0_#1899D6]">🌦️</div>
         <div>
-          <h1 className="text-lg font-extrabold text-foreground">Weather Advisory</h1>
-          <p className="text-xs text-muted">Weather-based farming recommendations</p>
+          <h1 className="text-lg font-extrabold text-[#4B4B4B]">Weather Advisory</h1>
+          <p className="text-xs text-[#777777]">🦜 Weather-based farming recommendations</p>
         </div>
       </div>
 
       <form onSubmit={(e) => { e.preventDefault(); fetchWeather(); }} className="flex gap-2 mb-6">
         <input type="text" value={location} onChange={(e) => setLocation(e.target.value)}
-          placeholder="Enter your district..." className="flex-1 px-5 py-3.5 rounded-2xl bg-surface border-2 border-border text-foreground placeholder:text-muted-light font-medium focus:border-primary focus:ring-2 focus:ring-primary/20" />
+          placeholder="Enter your district..." className="flex-1 px-5 py-3.5 rounded-2xl bg-white border-2 border-[#E5E5E5] text-[#4B4B4B] placeholder:text-[#AFAFAF] font-medium focus:border-[#1CB0F6] focus:ring-2 focus:ring-[#1CB0F6]/20 min-h-[44px]" />
         <button type="submit" disabled={loading}
-          className="btn-3d-primary px-5 py-3.5 shadow-[0_4px_0_var(--primary-dark)] disabled:opacity-50">
+          className="bg-[#58CC02] text-white px-5 py-3.5 rounded-2xl font-extrabold shadow-[0_4px_0_#46A302] active:translate-y-[4px] active:shadow-none disabled:opacity-50 transition-all min-h-[44px] min-w-[44px]">
           {loading ? '...' : '🔍'}
         </button>
       </form>
 
       {/* Current Weather — Gradient Card */}
-      <div className="rounded-3xl bg-gradient-to-br from-blue-500 to-blue-700 text-white p-6 mb-5 shadow-[0_5px_0_#1e40af] border-2 border-blue-400/30">
-        <p className="text-blue-200 text-xs font-bold uppercase tracking-wider">{w.location}</p>
+      <div className="rounded-2xl bg-[#1CB0F6] text-white p-6 mb-5 shadow-[0_5px_0_#1899D6] border-2 border-[#1899D6]">
+        <p className="text-blue-100 text-xs font-extrabold uppercase tracking-wider">{w.location}</p>
         <div className="flex items-end gap-4 mt-2">
           <span className="text-5xl font-extrabold">{w.current.temperature}°</span>
           <div>
-            <p className="text-blue-100 font-bold">{w.current.description}</p>
-            <p className="text-blue-200 text-xs mt-1">💧 {w.current.humidity}% | 💨 {w.current.windSpeed} km/h</p>
+            <p className="text-white font-extrabold">{w.current.description}</p>
+            <p className="text-blue-100 text-xs mt-1 font-bold">💧 {w.current.humidity}% | 💨 {w.current.windSpeed} km/h</p>
           </div>
         </div>
       </div>
 
       {/* 5-Day Forecast */}
-      <h2 className="font-extrabold text-foreground mb-3 text-sm uppercase tracking-wider">5-Day Forecast</h2>
+      <h2 className="font-extrabold text-[#4B4B4B] mb-3 text-sm uppercase tracking-wider">5-Day Forecast</h2>
       <div className="grid grid-cols-5 gap-2 mb-6">
         {w.forecast.map((day, i) => (
-          <div key={i} className="text-center p-2.5 rounded-2xl bg-surface border-2 border-border shadow-[0_2px_0_rgba(0,0,0,0.04)]">
-            <p className="text-[10px] font-bold text-muted uppercase">{day.date}</p>
-            <p className="text-lg font-extrabold text-foreground mt-1">{day.high}°</p>
-            <p className="text-[10px] text-muted">{day.low}°</p>
-            <p className="text-[10px] text-blue-500 font-bold mt-1">💧{day.rainfall}mm</p>
+          <div key={i} className="text-center p-2.5 rounded-2xl bg-white border-2 border-[#E5E5E5] shadow-[0_2px_0_#E5E5E5]">
+            <p className="text-[10px] font-extrabold text-[#777777] uppercase">{day.date}</p>
+            <p className="text-lg font-extrabold text-[#4B4B4B] mt-1">{day.high}°</p>
+            <p className="text-[10px] text-[#777777]">{day.low}°</p>
+            <p className="text-[10px] text-[#1CB0F6] font-extrabold mt-1">💧{day.rainfall}mm</p>
           </div>
         ))}
       </div>
 
       {/* Farming Actions — Tactile Cards */}
-      <h2 className="font-extrabold text-foreground mb-3 text-sm uppercase tracking-wider flex items-center gap-1.5">
-        <img src="/logo.png" alt="Kino Mascot" className="w-5 h-5 object-contain" />
-        Kino Recommends
-      </h2>
+      <h2 className="font-extrabold text-[#4B4B4B] mb-3 text-sm uppercase tracking-wider">🦜 Kino Recommends</h2>
       <div className="space-y-3 mb-6">
         {w.farmingActions.map((action, i) => (
-          <div key={i} className="flex gap-3 p-4 rounded-2xl bg-surface border-2 border-border shadow-[0_3px_0_rgba(0,0,0,0.04)]">
+          <div key={i} className="flex gap-3 p-4 rounded-2xl bg-white border-2 border-[#E5E5E5] shadow-[0_2px_0_#E5E5E5]">
             <span className={`w-3 h-3 rounded-full mt-1 shrink-0 ${
-              action.urgency === 'high' ? 'bg-error' : action.urgency === 'medium' ? 'bg-warning' : 'bg-success'
+              action.urgency === 'high' ? 'bg-[#FF4B4B]' : action.urgency === 'medium' ? 'bg-[#FFC800]' : 'bg-[#58CC02]'
             }`} />
             <div>
-              <p className="font-bold text-foreground text-sm">{action.action}</p>
-              <p className="text-xs text-muted mt-0.5">{action.reason}</p>
+              <p className="font-extrabold text-[#4B4B4B] text-sm">{action.action}</p>
+              <p className="text-xs text-[#777777] mt-0.5">{action.reason}</p>
             </div>
           </div>
         ))}
@@ -87,21 +84,21 @@ export default function WeatherPage() {
 
       {w.riskAlerts.length > 0 && (
         <>
-          <h2 className="font-extrabold text-foreground mb-3 text-sm uppercase tracking-wider">⚠️ Risk Alerts</h2>
+          <h2 className="font-extrabold text-[#4B4B4B] mb-3 text-sm uppercase tracking-wider">⚠️ Risk Alerts</h2>
           <div className="space-y-3 mb-6">
             {w.riskAlerts.map((alert, i) => (
               <div key={i} className={`p-4 rounded-2xl border-2 ${
-                alert.severity === 'high' ? 'bg-red-50 border-red-200 shadow-[0_3px_0_rgba(239,68,68,0.1)]' : 'bg-amber-50 border-amber-200 shadow-[0_3px_0_rgba(217,119,6,0.1)]'
+                alert.severity === 'high' ? 'bg-[#FF4B4B]/10 border-[#FF4B4B] shadow-[0_2px_0_#FF4B4B]' : 'bg-[#FFC800]/10 border-[#FFC800] shadow-[0_2px_0_#FFC800]'
               }`}>
-                <p className={`font-bold text-sm ${alert.severity === 'high' ? 'text-red-800' : 'text-amber-800'}`}>{alert.message}</p>
-                <p className="text-xs text-muted mt-1">Valid: {alert.validUntil}</p>
+                <p className={`font-extrabold text-sm ${alert.severity === 'high' ? 'text-[#FF4B4B]' : 'text-[#4B4B4B]'}`}>{alert.message}</p>
+                <p className="text-xs text-[#777777] mt-1">Valid: {alert.validUntil}</p>
               </div>
             ))}
           </div>
         </>
       )}
 
-      <p className="text-[10px] text-muted text-center font-medium">Demo data — connect IMD API for live forecasts</p>
+      <p className="text-[10px] text-[#777777] text-center font-extrabold">Demo data — connect IMD API for live forecasts</p>
     </div>
   );
 }
