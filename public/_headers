@@ -1,4 +1,11 @@
-# https://developers.cloudflare.com/workers/static-assets/headers
-# https://opennext.js.org/cloudflare/caching#static-assets-caching
-/_next/static/*
-  Cache-Control: public,max-age=31536000,immutable
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(self)
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+/api/*
+  Access-Control-Allow-Origin: https://kishanai.shraj.workers.dev
+  Access-Control-Allow-Methods: GET, POST, OPTIONS
+  Access-Control-Allow-Headers: Content-Type

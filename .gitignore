@@ -50,3 +50,8 @@ next-env.d.ts
 
 
 !.dev.vars.example
+api.js
+src/app/api/llm/models/route.ts
+src/app/api/llm/chat/completions/route.ts
+src/lib/clico.ts
+worker.js
