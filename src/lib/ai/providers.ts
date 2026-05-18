@@ -5,7 +5,7 @@ import type { QueryContext } from './types';
 // Provider types
 // ---------------------------------------------------------------------------
 
-export type ProviderName = 'openai' | 'gemini' | 'anthropic' | 'mock';
+export type ProviderName = 'openai' | 'gemini' | 'anthropic' | 'cloudflare' | 'mock';
 
 export interface GenerateOptions {
   systemPrompt: string;
@@ -305,19 +305,111 @@ class AnthropicProvider implements AIProvider {
   }
 }
 
-// ---------------------------------------------------------------------------
-// Mock provider - works without any API keys
-// ---------------------------------------------------------------------------
+/**
+ * Cloudflare Worker Provider (Always Available, free, high-performance fallback)
+ */
+class CloudflareWorkerProvider implements AIProvider {
+  readonly name: ProviderName = 'cloudflare';
+  private workerUrl: string;
+
+  constructor(workerUrl: string) {
+    this.workerUrl = workerUrl || 'https://free-claude.shraj.workers.dev';
+  }
+
+  get isAvailable(): boolean {
+    return true; // Free Cloudflare Worker proxy is always publicly available
+  }
+
+  async generate(options: GenerateOptions): Promise<string> {
+    const res = await fetch(`${this.workerUrl}/v1/chat/completions`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'anthropic/claude-sonnet-4-6',
+        temperature: options.temperature ?? 0.4,
+        max_tokens: options.maxTokens ?? 1024,
+        messages: [
+          { role: 'system', content: options.systemPrompt },
+          { role: 'user', content: options.userPrompt },
+        ],
+      }),
+      signal: options.signal,
+    });
+
+    if (!res.ok) {
+      throw new Error(`Cloudflare Worker API error: HTTP ${res.status}`);
+    }
+
+    const data = (await res.json()) as any;
+    return data.choices?.[0]?.message?.content ?? '';
+  }
+
+  async *generateStream(options: GenerateOptions): AsyncIterable<StreamChunk> {
+    const res = await fetch(`${this.workerUrl}/v1/chat/completions`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'anthropic/claude-sonnet-4-6',
+        temperature: options.temperature ?? 0.4,
+        max_tokens: options.maxTokens ?? 1024,
+        stream: true,
+        messages: [
+          { role: 'system', content: options.systemPrompt },
+          { role: 'user', content: options.userPrompt },
+        ],
+      }),
+      signal: options.signal,
+    });
+
+    if (!res.ok || !res.body) {
+      throw new Error(`Cloudflare Worker stream error: HTTP ${res.status}`);
+    }
+
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop() ?? '';
+
+      for (const line of lines) {
+        const trimmed = line.trim();
+        if (!trimmed.startsWith('data: ')) continue;
+        
+        const payload = trimmed.slice(6).trim();
+        if (payload === '[DONE]') {
+          yield { text: '', done: true };
+          return;
+        }
+        try {
+          const parsed = JSON.parse(payload);
+          const delta = parsed.choices?.[0]?.delta?.content;
+          if (delta) yield { text: delta, done: false };
+        } catch {
+          // skip
+        }
+      }
+    }
+
+    yield { text: '', done: true };
+  }
+}
 
 class MockProvider implements AIProvider {
   readonly name: ProviderName = 'mock';
   readonly isAvailable = true;
 
   async generate(options: GenerateOptions): Promise<string> {
-    // Small delay to simulate network latency
     await new Promise((r) => setTimeout(r, 100));
-
-    // Extract intent hint from system prompt to pick the right mock response
     const system = options.systemPrompt.toLowerCase();
     let mockAnswer: string;
 
@@ -420,7 +512,6 @@ class MockProvider implements AIProvider {
 
   async *generateStream(options: GenerateOptions): AsyncIterable<StreamChunk> {
     const full = await this.generate(options);
-    // Simulate streaming by yielding chunks
     const words = full.split(' ');
     for (let i = 0; i < words.length; i++) {
       const chunk = (i === 0 ? '' : ' ') + words[i];
@@ -443,10 +534,14 @@ function detectProviders(): AIProvider[] {
   const openaiModel = process.env.OPENAI_MODEL ?? '';
   const geminiKey = process.env.GEMINI_API_KEY ?? '';
   const anthropicKey = process.env.ANTHROPIC_API_KEY ?? '';
+  const workerUrl = process.env.FREE_CLAUDE_WORKER_URL ?? '';
 
   if (openaiKey) providers.push(new OpenAIProvider(openaiKey, openaiBase || undefined, openaiModel || undefined));
   if (geminiKey) providers.push(new GeminiProvider(geminiKey));
   if (anthropicKey) providers.push(new AnthropicProvider(anthropicKey));
+  
+  // Integrate the published Cloudflare worker (always active fallback)
+  providers.push(new CloudflareWorkerProvider(workerUrl));
 
   // Mock is always last as fallback
   providers.push(new MockProvider());
@@ -456,9 +551,6 @@ function detectProviders(): AIProvider[] {
 
 let providerChain: AIProvider[] | null = null;
 
-/**
- * Returns the ordered list of available providers (real first, mock last).
- */
 export function getProviderChain(): AIProvider[] {
   if (!providerChain) {
     providerChain = detectProviders();
@@ -466,26 +558,15 @@ export function getProviderChain(): AIProvider[] {
   return providerChain;
 }
 
-/**
- * Returns the first available real provider, or mock if none configured.
- */
 export function getActiveProvider(): AIProvider {
   const chain = getProviderChain();
-  return chain[0]; // first available (mock is always last)
+  return chain[0];
 }
 
-/**
- * Returns true when running without any real AI provider keys.
- */
 export function isMockMode(): boolean {
   return getActiveProvider().name === 'mock';
 }
 
-/**
- * Unified generation with automatic fallback through the provider chain.
- * Tries each provider in order; if one fails, falls back to the next.
- * The last provider in the chain is always MockProvider.
- */
 export async function generateResponse(options: GenerateOptions): Promise<string> {
   const chain = getProviderChain();
   let lastError: Error | null = null;
@@ -501,14 +582,9 @@ export async function generateResponse(options: GenerateOptions): Promise<string
     }
   }
 
-  // Should never reach here because MockProvider is always available
   throw lastError ?? new Error('No AI provider available');
 }
 
-/**
- * Streaming generation with automatic fallback.
- * Falls back to non-streaming if streaming fails.
- */
 export async function* generateResponseStream(
   options: GenerateOptions,
 ): AsyncIterable<StreamChunk> {
