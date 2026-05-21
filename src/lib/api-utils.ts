@@ -17,9 +17,15 @@ export function validateRequired(body: Record<string, unknown>, fields: string[]
   return null;
 }
 
-export function corsHeaders(): Record<string, string> {
+export function corsHeaders(origin?: string): Record<string, string> {
+  const allowed = origin && (
+    origin.endsWith('.workers.dev') ||
+    origin.endsWith('.kishanai.com') ||
+    origin === 'http://localhost:3000'
+  ) ? origin : 'https://kishanai.shraj.workers.dev';
+
   return {
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': allowed,
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
   };
