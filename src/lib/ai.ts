@@ -7,6 +7,17 @@
 
 import type { AIResponse } from '@/types';
 
+type ChatCompletionResponse = {
+  choices?: Array<{
+    message?: { content?: string };
+    delta?: { content?: string };
+  }>;
+};
+
+function getErrorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
+}
+
 export interface AIChatMessage {
   role: 'system' | 'user' | 'assistant';
   content: string;
@@ -51,12 +62,12 @@ export async function generateChat(options: AIChatOptions): Promise<string> {
       });
 
       if (response.ok) {
-        const data = await response.json() as any;
+        const data = await response.json() as ChatCompletionResponse;
         return data.choices?.[0]?.message?.content ?? '';
       }
       console.warn(`⚠️ [KishanAI] NVIDIA NIM returned HTTP ${response.status}. Initiating worker fallback...`);
-    } catch (err: any) {
-      console.warn('⚠️ [KishanAI] NVIDIA NIM request failed. Initiating worker fallback...', err.message);
+    } catch (err: unknown) {
+      console.warn('⚠️ [KishanAI] NVIDIA NIM request failed. Initiating worker fallback...', getErrorMessage(err));
     }
   } else {
     console.log('ℹ️ [KishanAI] No NVIDIA credentials detected. Routing directly to Cloudflare Worker...');
@@ -83,7 +94,7 @@ export async function generateChat(options: AIChatOptions): Promise<string> {
     throw new Error(`KishanAI Proxy Error: Cloudflare Worker returned HTTP ${workerRes.status} - ${errorBody}`);
   }
 
-  const data = await workerRes.json() as any;
+  const data = await workerRes.json() as ChatCompletionResponse;
   return data.choices?.[0]?.message?.content ?? '';
 }
 
@@ -256,8 +267,8 @@ export async function* streamChat(options: AIChatOptions): AsyncGenerator<string
       } else {
         console.warn(`⚠️ [KishanAI] NVIDIA NIM stream failed with HTTP ${response.status}. Initiating worker fallback...`);
       }
-    } catch (err: any) {
-      console.warn('⚠️ [KishanAI] NVIDIA NIM stream request failed. Initiating worker fallback...', err.message);
+    } catch (err: unknown) {
+      console.warn('⚠️ [KishanAI] NVIDIA NIM stream request failed. Initiating worker fallback...', getErrorMessage(err));
     }
   }
 

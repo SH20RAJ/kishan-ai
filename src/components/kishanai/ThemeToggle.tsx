@@ -3,15 +3,16 @@
 import { useState, useEffect } from 'react';
 
 export default function ThemeToggle() {
-  const [dark, setDark] = useState(false);
-
-  useEffect(() => {
+  const [dark, setDark] = useState(() => {
+    if (typeof window === 'undefined') return false;
     const saved = localStorage.getItem('kisanai-theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const isDark = saved ? saved === 'dark' : prefersDark;
-    setDark(isDark);
-    document.documentElement.classList.toggle('dark', isDark);
-  }, []);
+    return saved ? saved === 'dark' : prefersDark;
+  });
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', dark);
+  }, [dark]);
 
   const toggle = () => {
     const next = !dark;

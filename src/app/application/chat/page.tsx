@@ -11,6 +11,13 @@ const starterQuestions = [
   { text: 'How to protect crops from pests?', emoji: '🐛' },
 ];
 
+function createMessageMeta() {
+  return {
+    id: crypto.randomUUID(),
+    timestamp: new Date().toISOString(),
+  };
+}
+
 export default function ChatPage() {
   const [messages, setMessages] = useState<(ChatMessage & { aiResponse?: AIResponse })[]>([]);
   const [input, setInput] = useState('');
@@ -23,8 +30,9 @@ export default function ChatPage() {
 
   const sendMessage = async (text: string) => {
     if (!text.trim() || loading) return;
+    const userMeta = createMessageMeta();
     const userMsg: ChatMessage & { aiResponse?: AIResponse } = {
-      id: Date.now().toString(), role: 'user', content: text, timestamp: new Date().toISOString(),
+      id: userMeta.id, role: 'user', content: text, timestamp: userMeta.timestamp,
     };
     setMessages(prev => [...prev, userMsg]);
     setInput('');
@@ -33,14 +41,16 @@ export default function ChatPage() {
       const res = await fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: text }) });
       const data = (await res.json()) as { data: AIResponse };
       const aiResp: AIResponse = data.data;
+      const assistantMeta = createMessageMeta();
       setMessages(prev => [...prev, {
-        id: (Date.now() + 1).toString(), role: 'assistant', content: aiResp.answer,
-        timestamp: new Date().toISOString(), sources: aiResp.sources, aiResponse: aiResp,
+        id: assistantMeta.id, role: 'assistant', content: aiResp.answer,
+        timestamp: assistantMeta.timestamp, sources: aiResp.sources, aiResponse: aiResp,
       }]);
     } catch {
+      const errorMeta = createMessageMeta();
       setMessages(prev => [...prev, {
-        id: (Date.now() + 1).toString(), role: 'assistant', content: 'Sorry, something went wrong. Please try again.',
-        timestamp: new Date().toISOString(),
+        id: errorMeta.id, role: 'assistant', content: 'Sorry, something went wrong. Please try again.',
+        timestamp: errorMeta.timestamp,
       }]);
     } finally { setLoading(false); }
   };

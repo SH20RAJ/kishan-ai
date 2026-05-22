@@ -432,3 +432,41 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ============================================================
+   PITCH PAGE PRINT SUPPORT
+   ============================================================ */
+
+@media print {
+  .pitch-no-print {
+    display: none !important;
+  }
+
+  .pitch-page,
+  .pitch-page section,
+  .pitch-page footer {
+    background: #ffffff !important;
+    color: #111111 !important;
+  }
+
+  .pitch-page a {
+    color: #111111 !important;
+    text-decoration: none !important;
+  }
+
+  .pitch-page section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+  }
+
+  .pitch-page details {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .pitch-page details > div {
+    display: block !important;
+  }
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode, useState } from "react";
+import Link from "next/link";
 import LanguageSelector from "./LanguageSelector";
 
 interface NavItem {
@@ -52,12 +53,12 @@ export default function AppShell({
               {sidebarOpen ? "\u2715" : "\u2630"}
             </span>
           </button>
-          <a href="/" className="flex items-center gap-2 hover:opacity-80">
+          <Link href="/" className="flex items-center gap-2 hover:opacity-80">
             <span className="text-xl" aria-hidden="true">{"\uD83C\uDF3E"}</span>
             <span className="text-lg font-bold text-primary tracking-tight">
               KisanAI
             </span>
-          </a>
+          </Link>
         </div>
         <LanguageSelector
           currentCode={currentLang}

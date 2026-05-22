@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const quickActions = [
   { href: '/application/chat', label: 'Ask Question', labelHi: 'पूछो', emoji: '💬', bg: 'bg-[#58CC02]', shadow: 'shadow-[0_5px_0_#46A302]' },
@@ -13,12 +13,9 @@ const quickActions = [
 ];
 
 export default function DashboardPage() {
-  const [dateStr, setDateStr] = useState('');
-
-  useEffect(() => {
-    const now = new Date();
-    setDateStr(now.toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }));
-  }, []);
+  const [dateStr] = useState(() =>
+    new Date().toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }),
+  );
 
   return (
     <div className="px-4 py-6 pb-8 max-w-lg mx-auto bg-white">

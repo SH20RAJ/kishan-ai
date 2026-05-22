@@ -1,6 +1,12 @@
 import type { AIResponse } from '@/types';
 import type { QueryContext } from './types';
 
+type ChatCompletionResponse = {
+  choices?: Array<{
+    message?: { content?: string };
+  }>;
+};
+
 // ---------------------------------------------------------------------------
 // Provider types
 // ---------------------------------------------------------------------------
@@ -342,7 +348,7 @@ class CloudflareWorkerProvider implements AIProvider {
       throw new Error(`Cloudflare Worker API error: HTTP ${res.status}`);
     }
 
-    const data = (await res.json()) as any;
+    const data = (await res.json()) as ChatCompletionResponse;
     return data.choices?.[0]?.message?.content ?? '';
   }
 

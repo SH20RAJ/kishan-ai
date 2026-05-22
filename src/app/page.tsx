@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { translations, type LanguageCode } from "@/lib/translations";
+import { translations, type LanguageCode, type TranslationSet } from "@/lib/translations";
 
 /* ─── Shared data arrays (holding visual SVG icons and step numbers) ─── */
 
@@ -116,7 +116,7 @@ const trustPoints = [
 /* ─── Client Waitlist Form ─── */
 
 interface WaitlistInlineProps {
-  t: any;
+  t: TranslationSet;
 }
 
 function WaitlistInline({ t }: WaitlistInlineProps) {
