@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useState, useRef, useEffect } from 'react';
 import type { ChatMessage, AIResponse } from '@/types';
 
@@ -60,9 +61,9 @@ export default function ChatPage() {
       {/* Messages */}
       <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
         {messages.length === 0 && (
-          <div className="flex flex-col items-center justify-center h-full text-center px-4">
-            <div className="w-20 h-20 rounded-2xl bg-[#58CC02] flex items-center justify-center overflow-hidden mb-4 shadow-[0_5px_0_#46A302]">
-              <img src="/logo.png" alt="Kino Mascot" className="w-16 h-16 object-cover scale-[1.08]" />
+            <div className="flex flex-col items-center justify-center h-full text-center px-4">
+              <div className="w-20 h-20 rounded-2xl bg-[#58CC02] flex items-center justify-center overflow-hidden mb-4 shadow-[0_5px_0_#46A302]">
+              <Image src="/logo.png" alt="Kino Mascot" width={64} height={64} className="w-16 h-16 object-cover scale-[1.08]" />
             </div>
             <h2 className="text-xl font-extrabold text-[#4B4B4B] mb-1">Ask Kino</h2>
             <p className="text-[#777777] text-sm mb-6">Your AI farming assistant — ask anything!</p>
@@ -81,7 +82,7 @@ export default function ChatPage() {
           <div key={msg.id} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
             {msg.role === 'assistant' && (
               <div className="w-8 h-8 rounded-xl bg-[#58CC02] flex items-center justify-center overflow-hidden mr-2 mt-1 shrink-0 shadow-[0_2px_0_#46A302]">
-                <img src="/logo.png" alt="Kino Mascot" className="w-6 h-6 object-cover scale-[1.08]" />
+                <Image src="/logo.png" alt="Kino Mascot" width={24} height={24} className="w-6 h-6 object-cover scale-[1.08]" />
               </div>
             )}
             <div className={`max-w-[80%] rounded-2xl px-5 py-3.5 ${
@@ -124,7 +125,7 @@ export default function ChatPage() {
         {loading && (
           <div className="flex justify-start">
             <div className="w-8 h-8 rounded-xl bg-[#58CC02] flex items-center justify-center overflow-hidden mr-2 shrink-0 shadow-[0_2px_0_#46A302]">
-              <img src="/logo.png" alt="Kino Mascot" className="w-6 h-6 object-cover scale-[1.08]" />
+              <Image src="/logo.png" alt="Kino Mascot" width={24} height={24} className="w-6 h-6 object-cover scale-[1.08]" />
             </div>
             <div className="bg-white border-2 border-[#E5E5E5] rounded-2xl rounded-bl-lg px-5 py-3.5 shadow-[0_2px_0_#E5E5E5]">
               <div className="flex items-center gap-2">

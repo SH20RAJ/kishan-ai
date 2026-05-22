@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 
 const quickActions = [
@@ -22,7 +23,7 @@ export default function DashboardPage() {
       {/* Kino Welcome Banner */}
       <section className="mb-6 rounded-2xl bg-white border-2 border-[#E5E5E5] shadow-[0_2px_0_#E5E5E5] p-5 flex items-center gap-4">
         <div className="w-16 h-16 rounded-2xl bg-[#58CC02] border-2 border-[#46A302] flex items-center justify-center overflow-hidden shrink-0 shadow-[0_3px_0_#46A302]">
-          <img src="/logo.png" alt="Kino Mascot" className="w-14 h-14 object-cover scale-[1.08]" />
+          <Image src="/logo.png" alt="Kino Mascot" width={56} height={56} className="w-14 h-14 object-cover scale-[1.08]" />
         </div>
         <div>
           <h1 className="text-lg font-extrabold text-[#4B4B4B] tracking-tight">Namaste, Kisan!</h1>
@@ -54,7 +55,7 @@ export default function DashboardPage() {
         <Link href="/application/chat" className="block rounded-2xl bg-[#58CC02] border-2 border-[#46A302] p-6 text-white shadow-[0_5px_0_#46A302] active:translate-y-[5px] active:shadow-none transition-all min-h-[44px]">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center overflow-hidden shrink-0 shadow-md">
-              <img src="/logo.png" alt="Kino Mascot" className="w-10 h-10 object-cover scale-[1.08]" />
+              <Image src="/logo.png" alt="Kino Mascot" width={40} height={40} className="w-10 h-10 object-cover scale-[1.08]" />
             </div>
             <div>
               <h3 className="font-extrabold text-lg">Ask Kino anything</h3>

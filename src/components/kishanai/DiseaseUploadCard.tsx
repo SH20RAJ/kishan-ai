@@ -93,6 +93,7 @@ export default function DiseaseUploadCard({
           }`}
         >
           {preview ? (
+            /* eslint-disable-next-line @next/next/no-img-element -- Data URL preview from a local upload. */
             <img
               src={preview}
               alt="Uploaded crop photo"

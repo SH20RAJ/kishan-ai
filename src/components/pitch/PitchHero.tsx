@@ -34,7 +34,7 @@ export function PitchHero() {
               <a href="#data-proof" className="inline-flex items-center justify-center rounded-md border border-[#DDD2BD] bg-[#FFFDF8] px-5 py-3 text-sm font-black text-[#174C35] transition hover:border-[#B8892E]">
                 View Data Proof
               </a>
-              <PrintPitchButton className="sm:hidden" />
+              <PrintPitchButton />
               <a href="mailto:partnerships@kishanai.com?subject=KisanAI%20pilot%20conversation" className="inline-flex items-center justify-center rounded-md border border-[#DDD2BD] bg-[#FFFDF8] px-5 py-3 text-sm font-black text-[#174C35] transition hover:border-[#B8892E]">
                 Contact for Pilot
               </a>
@@ -50,4 +50,3 @@ export function PitchHero() {
     </section>
   );
 }
-

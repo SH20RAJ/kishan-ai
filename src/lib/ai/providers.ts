@@ -1,6 +1,3 @@
-import type { AIResponse } from '@/types';
-import type { QueryContext } from './types';
-
 type ChatCompletionResponse = {
   choices?: Array<{
     message?: { content?: string };

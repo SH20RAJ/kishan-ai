@@ -13,14 +13,14 @@
 
 ## Spec Files
 
-- [ ] `.specs/pitch-page/00-source-analysis.md`
+- [x] `.specs/pitch-page/00-source-analysis.md`
 - [x] `.specs/pitch-page/01-content-architecture.md`
-- [ ] `.specs/pitch-page/02-investor-narrative.md`
-- [ ] `.specs/pitch-page/03-data-proof-map.md`
-- [ ] `.specs/pitch-page/04-ui-ux-plan.md`
-- [ ] `.specs/pitch-page/05-component-plan.md`
+- [x] `.specs/pitch-page/02-investor-narrative.md`
+- [x] `.specs/pitch-page/03-data-proof-map.md`
+- [x] `.specs/pitch-page/04-ui-ux-plan.md`
+- [x] `.specs/pitch-page/05-component-plan.md`
 - [x] `.specs/pitch-page/06-implementation-checklist.md`
-- [ ] `.specs/pitch-page/07-quality-review.md`
+- [x] `.specs/pitch-page/07-quality-review.md`
 
 Do not start coding until `00`, `02`, `03`, `04`, and `05` exist.
 
@@ -205,4 +205,3 @@ Include:
 - [ ] B2B, B2C, B2B2C, government revenue paths explained.
 - [ ] Risks and assumptions visible.
 - [ ] Final CTA clear.
-

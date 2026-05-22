@@ -1,6 +1,6 @@
-import type { QueryIntent, SafetyCheck } from './types';
+import type { QueryIntent } from './types';
 import type { AIResponse } from '@/types';
-import { checkSafety, validateSources } from './safety';
+import { checkSafety } from './safety';
 import { classifyIntent } from './rag';
 
 // ---------------------------------------------------------------------------

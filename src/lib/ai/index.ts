@@ -3,7 +3,7 @@ import type { QueryContext, QueryIntent, RAGResult } from './types';
 import { classifyIntent, retrieveDocuments } from './rag';
 import { getSystemPrompt, buildUserPrompt } from './prompts';
 import { generateResponse, isMockMode } from './providers';
-import { checkSafety, validateSources, runSafetyPipeline } from './safety';
+import { runSafetyPipeline } from './safety';
 
 // ---------------------------------------------------------------------------
 // Public types

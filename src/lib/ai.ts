@@ -140,8 +140,9 @@ function classifyIntent(message: string): string {
   return 'general';
 }
 
-function buildUserPrompt(message: string, context?: ProcessQueryOptions['context']): string {
+function buildUserPrompt(message: string, intent: string, context?: ProcessQueryOptions['context']): string {
   const parts = [`Farmer question: ${message}`];
+  parts.push(`Detected intent: ${intent}`);
   if (context?.crop) parts.push(`Crop: ${context.crop}`);
   if (context?.location) parts.push(`Location: ${context.location}`);
   if (context?.language) parts.push(`Preferred language: ${context.language}`);
@@ -151,7 +152,7 @@ function buildUserPrompt(message: string, context?: ProcessQueryOptions['context
 
 export async function processQuery(options: ProcessQueryOptions): Promise<AIResponse> {
   const intent = classifyIntent(options.message);
-  const userPrompt = buildUserPrompt(options.message, options.context);
+  const userPrompt = buildUserPrompt(options.message, intent, options.context);
 
   try {
     const raw = await generateChat({

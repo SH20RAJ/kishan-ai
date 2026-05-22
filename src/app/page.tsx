@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { translations, type LanguageCode, type TranslationSet } from "@/lib/translations";
 
 /* ─── Shared data arrays (holding visual SVG icons and step numbers) ─── */
@@ -182,7 +183,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
           <Link href="/" className="text-xl font-extrabold text-[#58CC02] flex items-center gap-2 tracking-tight">
             <div className="w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center border-2 border-[#E5E5E5] bg-white">
-              <img src="/logo.png" alt="KisanAI Logo" className="w-7 h-7 object-contain" />
+              <Image src="/logo.png" alt="KisanAI Logo" width={28} height={28} className="w-7 h-7 object-contain" />
             </div>
             KisanAI
           </Link>
@@ -305,7 +306,7 @@ export default function HomePage() {
                     </div>
                   </div>
 
-                  <img
+                  <Image
                     src="/hero-mockup.png"
                     alt="KisanAI Chat App Mockup showing disease diagnosis"
                     width={450}
@@ -324,7 +325,7 @@ export default function HomePage() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6">
             <div className="flex flex-col md:flex-row items-center gap-8 bg-[#F7F7F7] rounded-2xl p-8 border-2 border-[#E5E5E5] shadow-[0_2px_0_#E5E5E5] relative">
               <div className="flex-shrink-0 w-24 h-24 sm:w-28 sm:h-28 bg-white rounded-2xl border-2 border-[#E5E5E5] flex items-center justify-center overflow-hidden shadow-[0_2px_0_#E5E5E5]">
-                <img src="/logo.png" alt="Kino the KisanAI Mascot" className="w-full h-full object-cover scale-[1.08]" />
+                <Image src="/logo.png" alt="Kino the KisanAI Mascot" width={112} height={112} className="w-full h-full object-cover scale-[1.08]" />
               </div>
               <div className="relative flex-1">
                 {/* Speech bubble tail */}
@@ -619,7 +620,7 @@ export default function HomePage() {
             <div>
               <Link href="/" className="text-xl font-extrabold text-white flex items-center gap-2 mb-4 tracking-tight">
                 <div className="w-7 h-7 rounded-lg overflow-hidden bg-white flex items-center justify-center border-2 border-white/20">
-                  <img src="/logo.png" alt="KisanAI Logo" className="w-6 h-6 object-contain" />
+                  <Image src="/logo.png" alt="KisanAI Logo" width={24} height={24} className="w-6 h-6 object-contain" />
                 </div>
                 KisanAI
               </Link>

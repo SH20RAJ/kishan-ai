@@ -57,6 +57,7 @@ export default function DiseaseDetectionPage() {
           }`}>
             {imagePreview ? (
               <div className="relative">
+                {/* eslint-disable-next-line @next/next/no-img-element -- Data URL preview from a local upload. */}
                 <img src={imagePreview} alt="Crop preview" className="max-h-48 mx-auto rounded-2xl border-2 border-[#E5E5E5]" />
                 <span className="text-xs text-[#58CC02] font-extrabold mt-3 block">Tap to change image</span>
               </div>
